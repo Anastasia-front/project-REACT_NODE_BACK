@@ -22,7 +22,7 @@ const login = async (req, res, next) => {
     const accessToken = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '30m' });
     await User.findOneAndUpdate({email}, {accessToken});
     res.json({
-        token: accessToken,
+        accessToken: accessToken,
         user: {
             name: user.name,
             email: user.email,
