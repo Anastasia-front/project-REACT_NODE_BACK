@@ -22,6 +22,8 @@ const loginSchema = Joi.object({
 
 const registerSchema = Joi.object({
   name: Joi.string()
+    .min(2)
+    .max(32)
     .required()
     .messages({
       'any.required': 'Missing required name field',
@@ -43,7 +45,7 @@ const registerSchema = Joi.object({
 });
 
 const updateSchema = Joi.object({
-  name: Joi.string(),
+  name: Joi.string().min(2).max(32),
   email: Joi.string()
     .pattern(new RegExp(emailRegexp)).messages({
       'string.pattern.base': 'Invalid email field',
