@@ -4,7 +4,7 @@ const { User } = require('../models');
 
 const { SECRET_KEY } = process.env
 
-const isAutorized = async (req, res, next) => {
+const isAuthorized = async (req, res, next) => {
     try {
         const [_, token] = (req.headers.authorization || '').split(' ')
         const isValidToken = jwt.verify(token, SECRET_KEY)
@@ -23,4 +23,4 @@ const isAutorized = async (req, res, next) => {
     }
 }
 
-module.exports = isAutorized
+module.exports = isAuthorized
