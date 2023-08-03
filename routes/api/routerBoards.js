@@ -4,16 +4,16 @@ const { ctrlBoards } = require("../../controllers");
 
 const { validateBody, isValidId } = require('../../middlewares');
 
-const {schemaBoard} = require('../../schemas')
+const { boardSchemas } = require('../../schemas')
 
 const routerBoards = express.Router();
 
 routerBoards.get('/', ctrlBoards.getBoards);
 
-routerBoards.post('/', validateBody(schemaBoard.addBoardSchema), ctrlBoards.addBoard);
+routerBoards.post('/', validateBody(boardSchemas.addBoardSchema), ctrlBoards.addBoard);
 
-routerBoards.put('/:id', isValidId, validateBody(schemaBoard.addBoardSchema), ctrlBoards.editBoard);
+routerBoards.put('/:id', isValidId, validateBody(boardSchemas.addBoardSchema), ctrlBoards.editBoard);
 
-routerBoards.delete('/:id', isValidId, schemaBoard.deleteBoard);
+routerBoards.delete('/:id', isValidId, ctrlBoards.deleteBoard);
 
 module.exports = routerBoards;
