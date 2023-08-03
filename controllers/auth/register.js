@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const register = async (req, res, next) => {
     const { value, error } = authSchema.registerSchema.validate(req.body);
     if (error) {
-        throw HttpError(400, `Missing or invalid required ${error.details[0].context.label} field`);
+        throw HttpError(400, error.details[0].message);
     }; 
 
     const { name, email, password } = value;

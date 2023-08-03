@@ -6,7 +6,7 @@ const { HttpError } = require('../../helpers');
 
 const editUser = async (req, res, next) => {
     const { user } = req;
-    const { value, error } = authSchema.editSchema.validate(req.body)
+    const { value, error } = authSchema.updateSchema.validate(req.body)
     if (error) {
         throw HttpError(400, `Invalid ${error.details[0].context.label} field`);
     }; 

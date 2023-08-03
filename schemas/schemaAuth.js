@@ -1,23 +1,61 @@
 const Joi = require("joi");
 
+const emailRegexp = '[a-z0-9]+@[a-z]+.[a-z]{2,3}$';
+const passwordRegexp = '((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,64})';
+
 const loginSchema = Joi.object({
-  email: Joi.string().pattern(new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}$')).required(),
-  password: Joi.string().required(),
+  email: Joi.string()
+    .pattern(new RegExp(emailRegexp))
+    .required()
+    .messages({
+      'any.required': 'Missing required email field',
+      'string.pattern.base': 'Invalid email field',
+    }),
+  password: Joi.string()
+    .pattern(new RegExp(passwordRegexp))
+    .required()
+    .messages({
+      'any.required': 'Missing required password field',
+      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
+    }),
 });
 
 const registerSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().pattern(new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}$')).required(),
-  password: Joi.string().required(),
+  name: Joi.string()
+    .required()
+    .messages({
+      'any.required': 'Missing required name field',
+    }),
+  email: Joi.string()
+    .pattern(new RegExp(emailRegexp))
+    .required()
+    .messages({
+      'any.required': 'Missing required email field',
+      'string.pattern.base': 'Invalid email field',
+    }),
+  password: Joi.string()
+    .pattern(new RegExp(passwordRegexp))
+    .required()
+    .messages({
+      'any.required': 'Missing required password field',
+      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
+    }),
 });
 
-const editSchema = Joi.object({
+const updateSchema = Joi.object({
   name: Joi.string(),
-  email: Joi.string().pattern(new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}$')),
-  password: Joi.string(),
+  email: Joi.string()
+    .pattern(new RegExp(emailRegexp)).messages({
+      'string.pattern.base': 'Invalid email field',
+    }),
+  password: Joi.string()
+    .pattern(new RegExp(passwordRegexp))
+    .messages({
+      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
+    }),
   theme: Joi.string().valid("light", "dark", "violet").insensitive(),
 })
 
-const authSchemas = { loginSchema, registerSchema, editSchema };
+const authSchemas = { loginSchema, registerSchema, updateSchema };
 
 module.exports = authSchemas;

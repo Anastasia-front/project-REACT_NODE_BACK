@@ -8,9 +8,7 @@ const { SECRET_KEY } = process.env;
 
 const login = async (req, res, next) => {
     const { value, error } = authSchema.loginSchema.validate(req.body);
-    if (error) {
-        throw HttpError(400, `Missing or invalid required ${error.details[0].context.label} field`);
-    };
+    if (error) throw HttpError(400, error.details[0].message);
 
     const { email, password } = value;
     const user = await User.findOne({ email });
