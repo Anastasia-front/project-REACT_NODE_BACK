@@ -53,9 +53,20 @@ const updateSchema = Joi.object({
     .messages({
       'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
     }),
-  theme: Joi.string().valid("light", "dark", "violet").insensitive(),
+  avatarURL: Joi.string(),
 })
 
-const authSchemas = { loginSchema, registerSchema, updateSchema };
+const updateTheme = Joi.object({
+  theme: Joi.string()
+    .valid("light", "dark", "violet")
+    .insensitive()
+    .required()
+    .messages({
+      'any.required': 'Missing required theme field',
+      'any.only': 'Theme field must be one of [light, dark, violet]',
+    }),
+}) 
+
+const authSchemas = { loginSchema, registerSchema, updateSchema, updateTheme };
 
 module.exports = authSchemas;

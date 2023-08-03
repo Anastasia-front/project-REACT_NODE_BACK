@@ -11,7 +11,7 @@ const editUser = async (req, res, next) => {
         throw HttpError(400, `Invalid ${error.details[0].context.label} field`);
     }; 
 
-    const { name, email, password, theme } = value;
+    const { name, email, password, avatarURL } = value;
 
     if (password) { 
         const salt = await bcrypt.genSalt();
@@ -23,7 +23,7 @@ const editUser = async (req, res, next) => {
                 name,
                 email,
                 password: hachedPassword,
-                theme,
+                avatarURL,
                 accessToken: '',
             },
             { new: true, select: 'name email theme avatarURL boards -_id' });
@@ -36,7 +36,7 @@ const editUser = async (req, res, next) => {
             {
                 name,
                 email,
-                theme,
+                avatarURL,
                 accessToken: '',
             },
             { new: true, select: 'name email theme avatarURL boards -_id' });
