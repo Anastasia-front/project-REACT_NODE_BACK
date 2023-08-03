@@ -3,7 +3,18 @@ const { handleMongooseError } = require("../helpers");
 
 const columnSchema = new Schema(
   {
-    //
+    title: {
+      type: String,
+      required: [true, "Title for the column is required"],
+    },
+    board: {
+      type: Schema.Types.ObjectId,
+      required: [true, "Board assignment for the column is required"],
+    },
+    taskOrder: {
+      type: Array,
+      default: []
+    },
   },
   { versionKey: false, timestamps: true }
 );
