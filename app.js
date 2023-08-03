@@ -13,6 +13,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 // const routerBoards = require("./routes/api");
 // const routerColumns = require("./routes/api");
 // const routerTasks = require("./routes/api");
+const routerHelp = require("./routes/api/routerHelp");
 
 app.use(logger(formatsLogger));
 app.use(cors());
@@ -23,6 +24,7 @@ app.use(express.json());
 // app.use("/api/boards", routerBoards);
 // app.use("/api/columns", routerColumns);
 // app.use("/api/tasks", routerTasks);
+app.use("/api/help", routerHelp);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not Found" });
