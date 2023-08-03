@@ -3,7 +3,29 @@ const { handleMongooseError } = require("../helpers");
 
 const taskSchema = new Schema(
   {
-    //
+    title: {
+      type: String,
+      required: [true, "Title for the task is required"],
+    },
+    description: {
+      type: String,
+      required: [true, "Description for the task is required"],
+    },
+    priority: {
+      type: String,
+      enum: ['without', 'low', 'medium', 'high'],
+      default: 'without',
+    },
+    deadline: {
+      type: String,
+      match: /^\d{8}$/,
+      default: null,
+    },
+    column: {
+      type: Schema.Types.ObjectId,
+      required: [true, "Board assignment for the column is required"],
+      ref: 'column,'
+    }
   },
   { versionKey: false, timestamps: true }
 );
