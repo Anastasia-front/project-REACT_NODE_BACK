@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { authSchema } = require('../../schemas');
 const { HttpError } = require('../../helpers');
 
-const editUser = async (req, res, next) => {
+const updateUser = async (req, res, next) => {
     const { user } = req;
     const { value, error } = authSchema.updateSchema.validate(req.body)
     if (error) {
@@ -15,14 +15,14 @@ const editUser = async (req, res, next) => {
 
     if (password) { 
         const salt = await bcrypt.genSalt();
-        const hachedPassword = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
         await User.findByIdAndUpdate(
             { _id: user._id },
             {
                 name,
                 email,
-                password: hachedPassword,
+                password: hashedPassword,
                 avatarURL,
                 accessToken: '',
             },
@@ -49,4 +49,4 @@ const editUser = async (req, res, next) => {
     }
 };
 
-module.exports = editUser;
+module.exports = updateUser;

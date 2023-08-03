@@ -8,8 +8,8 @@ const routerAuth = express.Router();
 
 routerAuth.post('/register', ctrlWrapper(ctrlAuth.register));
 routerAuth.get('/login', ctrlWrapper(ctrlAuth.login));
-routerAuth.patch('/edit', isAuthorized, ctrlWrapper(ctrlAuth.editUser));
-routerAuth.patch('/theme', isAuthorized, ctrlWrapper(ctrlAuth.theme))
+routerAuth.patch('/edit', isAuthorized, ctrlWrapper(ctrlAuth.updateUser));
+routerAuth.patch('/theme', isAuthorized, ctrlWrapper(ctrlAuth.changeTheme))
 routerAuth.get('/logout', isAuthorized, ctrlWrapper(ctrlAuth.logout));
 
 module.exports = routerAuth;

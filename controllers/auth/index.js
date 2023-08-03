@@ -1,13 +1,13 @@
 const register = require('./register');
 const login = require('./login');
-const editUser = require('./editUser');
-const theme = require('./theme')
+const updateUser = require('./updateUser');
+const changeTheme = require('./changeTheme')
 const logout = require('./logout');
 
 module.exports = {
     register,
     login,
-    editUser,
-    theme,
+    updateUser,
+    changeTheme,
     logout,
 };

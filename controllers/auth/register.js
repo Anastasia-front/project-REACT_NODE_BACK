@@ -9,13 +9,13 @@ const register = async (req, res, next) => {
 
     const { name, email, password } = value;
     const salt = await bcrypt.genSalt();
-    const hachedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const result = await User.create({
         name,
         email,
-        password: hachedPassword
-    })
+        password: hashedPassword,
+    });
 
     res.status(201).json(result);
 }
