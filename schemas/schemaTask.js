@@ -7,7 +7,7 @@ const addTaskSchema = Joi.object({
   priority: Joi.string().valid('without', 'low', 'medium', 'high').messages({
     'any.only': "Only 'without', 'low', 'medium', 'high' values are allowed",
   }),
-  deadline: Joi.string().regex(/^\d{8}$/).allow(null),
+  deadline: Joi.string().regex(/^\d{8}$/).required(),
   column: Joi.objectId().required(),
 });
 
@@ -17,7 +17,7 @@ const editTaskSchema = Joi.object({
   priority: Joi.string().valid('without', 'low', 'medium', 'high').messages({
     'any.only': "Only 'without', 'low', 'medium', 'high' values are allowed",
   }),
-  deadline: Joi.string().regex(/^\d{8}$/).allow(null),
+  deadline: Joi.string().regex(/^\d{8}$/).required(),
 });
 
 const taskSchemas = { addTaskSchema, editTaskSchema };
