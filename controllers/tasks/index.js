@@ -1,11 +1,11 @@
 const addTask = require('./addTask');
 const deleteTask = require('./deleteTask');
-const editTask = require('./editTask');
+const updateTask = require('./updateTask');
 const { ctrlWrapper } = require('../../decorators')
 
 module.exports = {
     addTask: ctrlWrapper(addTask),
-    editTask: ctrlWrapper(editTask),
+    updateTask: ctrlWrapper(updateTask),
     deleteTask: ctrlWrapper(deleteTask),
 }
 

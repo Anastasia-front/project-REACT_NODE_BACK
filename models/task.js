@@ -19,7 +19,7 @@ const taskSchema = new Schema(
     deadline: {
       type: String,
       match: /^\d{8}$/,
-      required: [true, "Deadline for the task is required"],
+      default: null,
     },
     column: {
       type: Schema.Types.ObjectId,

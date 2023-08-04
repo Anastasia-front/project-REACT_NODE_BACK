@@ -10,7 +10,7 @@ const routerTasks = express.Router();
 
 routerTasks.post('/', validateBody(taskSchemas.addTaskSchema), ctrlTasks.addTask);
 
-routerTasks.put('/:id', isValidId, validateBody(taskSchemas.editTaskSchema), ctrlTasks.editTask);
+routerTasks.put('/:id', isValidId, validateBody(taskSchemas.updateTaskSchema), ctrlTasks.updateTask);
 
 routerTasks.delete('/:id', isValidId, ctrlTasks.deleteTask);
 

@@ -7,19 +7,19 @@ const addTaskSchema = Joi.object({
   priority: Joi.string().valid('without', 'low', 'medium', 'high').messages({
     'any.only': "Only 'without', 'low', 'medium', 'high' values are allowed",
   }),
-  deadline: Joi.string().regex(/^\d{8}$/).required(),
+  deadline: Joi.string().regex(/^\d{8}$/).allow(null).required(),
   column: Joi.objectId().required(),
 });
 
-const editTaskSchema = Joi.object({
-  title: Joi.string().required(),
-  description: Joi.string().required(),
+const updateTaskSchema = Joi.object({
+  title: Joi.string(),
+  description: Joi.string(),
   priority: Joi.string().valid('without', 'low', 'medium', 'high').messages({
     'any.only': "Only 'without', 'low', 'medium', 'high' values are allowed",
   }),
-  deadline: Joi.string().regex(/^\d{8}$/).required(),
+  deadline: Joi.string().regex(/^\d{8}$/).allow(null),
 });
 
-const taskSchemas = { addTaskSchema, editTaskSchema };
+const taskSchemas = { addTaskSchema, updateTaskSchema };
 
 module.exports = taskSchemas;

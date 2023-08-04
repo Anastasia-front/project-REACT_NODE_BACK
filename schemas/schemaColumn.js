@@ -4,10 +4,10 @@ const addColumnSchema = Joi.object({
   //
 });
 
-const editColumnSchema = Joi.object({
+const updateColumnSchema = Joi.object({
   //
 });
 
-const columnSchemas = { addColumnSchema, editColumnSchema };
+const columnSchemas = { addColumnSchema, updateColumnSchema };
 
 module.exports = columnSchemas;
