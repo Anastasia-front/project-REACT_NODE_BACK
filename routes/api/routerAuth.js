@@ -7,10 +7,10 @@ const { isAuthorized } = require('../../middlewares');
 const routerAuth = express.Router();
 
 routerAuth.post('/register', ctrlWrapper(ctrlAuth.register));
-routerAuth.get('/login', ctrlWrapper(ctrlAuth.login));
+routerAuth.post('/login', ctrlWrapper(ctrlAuth.login));
 routerAuth.get('/current', isAuthorized, ctrlWrapper(ctrlAuth.currentUser));
 routerAuth.patch('/update', isAuthorized, ctrlWrapper(ctrlAuth.updateUser));
 routerAuth.patch('/theme', isAuthorized, ctrlWrapper(ctrlAuth.changeTheme))
-routerAuth.get('/logout', isAuthorized, ctrlWrapper(ctrlAuth.logout));
+routerAuth.post('/logout', isAuthorized, ctrlWrapper(ctrlAuth.logout));
 
 module.exports = routerAuth;
