@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "2.0.2",
-    "title": "Swagger test",
-    "description": "Showing off swagger-ui-express",
+    "title": "Swagger Task Pro",
+    "description": "Showing off Task Pro work",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -31,7 +31,7 @@
     }
   ],
   "paths": {
-    "/users/register": {
+    "api/users/register": {
       "post": {
         "tags": ["Users"],
         "summary": "User registration",
@@ -50,7 +50,7 @@
         },
         "responses": {
           "201": {
-            "description": "Successful operation",
+            "description": "User created, registration successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,17 +60,17 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
           "409": {
-            "description": "Provided email already exists",
+            "description": "Conflict (Provided email already exists)",
             "content": {}
           }
         }
       }
     },
-    "/users/login": {
+    "api/users/login": {
       "post": {
         "tags": ["Users"],
         "summary": "User login",
@@ -89,7 +89,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation",
+            "description": "Login successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -99,21 +99,56 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
           "401": {
-            "description": "Email (or Password) is wrong",
-            "content": {}
-          },
-          "404": {
-            "description": "Not found",
+            "description": "Not authorized (Email (or Password) is wrong)",
             "content": {}
           }
         }
       }
     },
-    "/users/current": {
+    "api/users/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "User logout",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "User's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Logout Successful, No content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogoutResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/current": {
       "get": {
         "tags": ["Users"],
         "summary": "Get current user",
@@ -131,8 +166,8 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Successful operation",
+          "200": {
+            "description": "Successful operation, get current user",
             "content": {
               "application/json": {
                 "schema": {
@@ -142,63 +177,24 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
-          "404": {
-            "description": "Not found",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           }
         }
       }
     },
-    "/users/logout": {
-      "post": {
-        "tags": ["Users"],
-        "summary": "User logout",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "User's id",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LogoutRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LogoutResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid request body)",
-            "content": {}
-          },
-          "404": {
-            "description": "Not found",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/users/update": {
+    "api/users/update": {
       "patch": {
         "tags": ["Users"],
         "summary": "User updating",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Update users's object",
+          "description": "Update user's object",
           "required": true,
           "content": {
             "application/json": {
@@ -210,7 +206,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation",
+            "description": "Successful operation, user updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -220,7 +216,7 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
           "404": {
@@ -230,7 +226,7 @@
         }
       }
     },
-    "/users/theme": {
+    "api/users/theme": {
       "patch": {
         "tags": ["Users"],
         "summary": "User theme",
@@ -248,8 +244,8 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Successful operation",
+          "200": {
+            "description": "Successful operation, theme updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -259,7 +255,7 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
           "404": {
@@ -295,32 +291,109 @@
         }
       },
       "RegistrationResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "User's name",
-              "example": "Mango"
-            },
-            "email": {
-              "type": "string",
-              "description": "User's email",
-              "format": "email",
-              "example": "mango@email.com"
-            },
-            "userId": {
-              "type": "number",
-              "description": "User's id",
-              "example": "32143232436545474"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "Qwerty123"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          },
+          "boards": {
+            "type": "array",
+            "description": "User's boards",
+            "example": []
+          },
+          "accessToken": {
+            "type": "string",
+            "description": "User's token",
+            "example": null
+          },
+          "userId": {
+            "type": "number",
+            "description": "User's id",
+            "example": "32143232436545474"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "Qwerty123"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "User's token",
+            "format": "bearer"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name",
+                "example": "Mango"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "format": "email",
+                "example": "mango@email.com"
+              },
+              "theme": {
+                "type": "string",
+                "description": "User's theme",
+                "enum": ["dark", "violet", "light"],
+                "example": "dark"
+              },
+              "avatarURL": {
+                "type": "string",
+                "description": "User's avatar",
+                "example": ""
+              },
+              "boards": {
+                "type": "array",
+                "description": "User's boards",
+                "example": []
+              }
             }
           }
-        },
-        "example": [
-          { "email": "1@gmail.com", "userId": "1" },
-          { "email": "2@gmail.com", "userId": "2" }
-        ]
+        }
       }
     },
     "securitySchemes": {
