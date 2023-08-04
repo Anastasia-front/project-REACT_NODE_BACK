@@ -1,0 +1,23 @@
+const { User } = require('../../models');
+const { authSchema } = require('../../schemas');
+const { HttpError } = require('../../helpers');
+const bcrypt = require('bcrypt')
+
+const register = async (req, res, next) => {
+    const { value, error } = authSchema.registerSchema.validate(req.body);
+    if (error) throw HttpError(400, error.details[0].message);
+
+    const { name, email, password } = value;
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const result = await User.create({
+        name,
+        email,
+        password: hashedPassword,
+    });
+
+    res.status(201).json(result);
+}
+  
+module.exports = register; 
