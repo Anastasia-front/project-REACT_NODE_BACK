@@ -1,4 +1,4 @@
-const { Column,Board } = require("../../models")
+const { Column, Board } = require("../../models")
 const { HttpError } = require('../../helpers')
 
 const deleteColumn = async (req, res) => {
@@ -10,7 +10,7 @@ const deleteColumn = async (req, res) => {
     await Board.findByIdAndUpdate(result.board, {
         $pull: { columnOrder: result._id },
     });
-    res.status(204).json({ message: `Column ${id} deleted` });
+    res.status(204).json();
 };
 
 module.exports = deleteColumn;

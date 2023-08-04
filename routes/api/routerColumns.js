@@ -13,7 +13,7 @@ routerColumns.get('/', ctrlColumns.getAllData);
 
 routerColumns.post('/', validateBody(columnSchemas.addColumnSchema), ctrlColumns.addColumn);
 
-routerColumns.put('/:id', isValidId, validateBody(columnSchemas.editColumnSchema), ctrlColumns.editColumn);
+routerColumns.put('/:id', isValidId, validateBody(columnSchemas.updateColumnSchema), ctrlColumns.updateColumn);
 
 routerColumns.delete('/:id', isValidId, ctrlColumns.deleteColumn);
 
