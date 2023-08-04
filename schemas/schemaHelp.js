@@ -1,8 +1,12 @@
 const Joi = require("joi");
 
+const { regExp } = require("../constants");
+
 const helpSchema = Joi.object({
-  email: Joi.string().email().required().messages({
-    "string.empty": "Email is required",
+  email: Joi.string().pattern(regExp.email).required().messages({
+    "any.required": "Missing required email field",
+    "string.pattern.base":
+      "Invalid email field. It must contain only Latin letters and meet all requirements for mail; may include numbers, letters in different case.",
   }),
   comment: Joi.string().min(10).max(256).required().messages({
     "string.empty": "Comment is required",
