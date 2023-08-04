@@ -1,7 +1,8 @@
-// const { Help } = require("../../models");
 const { helpSchema } = require("../../schemas");
 const { HttpError, sendEmail } = require("../../helpers");
-const { ctrlWrapper } = require("../../decorators");
+require("dotenv").config();
+
+const { SUPPORT_DEPARTMENT } = process.env;
 
 const help = async (req, res) => {
   const { error } = helpSchema.validate(req.body, { abortEarly: false });
@@ -13,16 +14,11 @@ const help = async (req, res) => {
   }
   const { email, comment } = req.body;
 
-  //   const user = await Help.findOne({ email });
-  //   if (!user) {
-  //     throw HttpError(401, "Email not found");
-  //   }
-
   const helpEmail = {
-    to: "vinem10460@weizixu.com",
+    to: SUPPORT_DEPARTMENT,
     from: email,
     subject: "Help Request",
-    html: `<p>Comment from user: ${email}</p><p>${comment}</p>`,
+    html: `<p>Comment from user: ${email} (email to which to return a reply)</p><p>${comment}</p>`,
   };
 
   await sendEmail(helpEmail);
@@ -32,4 +28,4 @@ const help = async (req, res) => {
   });
 };
 
-module.exports = ctrlWrapper(help);
+module.exports = help;
