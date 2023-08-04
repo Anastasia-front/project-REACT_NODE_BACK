@@ -6,8 +6,8 @@ require("dotenv").config();
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
-// const swaggerUi = require("swagger-ui-express");
-// const swaggerDocument = require("./swagger.json");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 const { routerAuth } = require("./routes/api");
 // const routerBoards = require("./routes/api");
@@ -18,7 +18,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api/users", routerAuth);
 // app.use("/api/boards", routerBoards);
 // app.use("/api/columns", routerColumns);
