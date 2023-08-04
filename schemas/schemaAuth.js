@@ -1,62 +1,63 @@
 const Joi = require("joi");
 
-const emailRegexp = '[a-z0-9]+@[a-z]+.[a-z]{2,3}$';
-const passwordRegexp = '((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,64})';
+const emailRegexp = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+const passwordRegexp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]+$/;
+const nameRegexp = /^[a-zA-Z0-9]+$/;
 
 const loginSchema = Joi.object({
-  email: Joi.string()
-    .pattern(new RegExp(emailRegexp))
-    .required()
-    .messages({
-      'any.required': 'Missing required email field',
-      'string.pattern.base': 'Invalid email field',
-    }),
+  email: Joi.string().pattern(emailRegexp).required().messages({
+    "any.required": "Missing required email field",
+    "string.pattern.base": "Invalid email field",
+  }),
   password: Joi.string()
-    .pattern(new RegExp(passwordRegexp))
+    .min(8)
+    .max(64)
+    .pattern(passwordRegexp)
     .required()
     .messages({
-      'any.required': 'Missing required password field',
-      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
+      "any.required": "Missing required password field",
+      "string.pattern.base": "Invalid password field",
     }),
 });
 
 const registerSchema = Joi.object({
-  name: Joi.string()
-    .min(2)
-    .max(32)
-    .required()
-    .messages({
-      'any.required': 'Missing required name field',
-    }),
-  email: Joi.string()
-    .pattern(new RegExp(emailRegexp))
-    .required()
-    .messages({
-      'any.required': 'Missing required email field',
-      'string.pattern.base': 'Invalid email field',
-    }),
+  name: Joi.string().min(2).max(32).pattern(nameRegexp).required().messages({
+    "any.required": "Missing required name field",
+    "string.pattern.base":
+      "Invalid name field. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
+  }),
+  email: Joi.string().pattern(emailRegexp).required().messages({
+    "any.required": "Missing required email field",
+    "string.pattern.base":
+      "Invalid email field. It must contain only Latin letters; may include numbers, letters in different case.",
+  }),
   password: Joi.string()
-    .pattern(new RegExp(passwordRegexp))
+    .min(8)
+    .max(64)
+    .pattern(passwordRegexp)
     .required()
     .messages({
-      'any.required': 'Missing required password field',
-      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
+      "any.required": "Missing required password field",
+      "string.pattern.base":
+        "Invalid password field. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
     }),
 });
 
 const updateSchema = Joi.object({
-  name: Joi.string().min(2).max(32),
-  email: Joi.string()
-    .pattern(new RegExp(emailRegexp)).messages({
-      'string.pattern.base': 'Invalid email field',
-    }),
-  password: Joi.string()
-    .pattern(new RegExp(passwordRegexp))
-    .messages({
-      'string.pattern.base': 'Invalid password field. Must contain upper and lower case letters and one number',
-    }),
+  name: Joi.string().min(2).max(32).pattern(nameRegexp).messages({
+    "string.pattern.base":
+      "Invalid name field. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
+  }),
+  email: Joi.string().pattern(emailRegexp).messages({
+    "string.pattern.base":
+      "Invalid email field. It must contain only Latin letters; may include numbers, letters in different case.",
+  }),
+  password: Joi.string().min(8).max(64).pattern(passwordRegexp).messages({
+    "string.pattern.base":
+      "Invalid password field. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
+  }),
   avatarURL: Joi.string(),
-})
+});
 
 const updateTheme = Joi.object({
   theme: Joi.string()
@@ -64,10 +65,11 @@ const updateTheme = Joi.object({
     .insensitive()
     .required()
     .messages({
-      'any.required': 'Missing required theme field',
-      'any.only': 'Theme field must be one of [light, dark, violet]',
+      "any.required": "Missing required theme field",
+      "any.only":
+        "Theme field must be one of the next value - light, dark or violet",
     }),
-}) 
+});
 
 const authSchemas = { loginSchema, registerSchema, updateSchema, updateTheme };
 
