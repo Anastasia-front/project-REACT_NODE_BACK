@@ -1,12 +1,12 @@
-const getBoards = require('./getBoards');
+const getAllBoards = require('./getAllBoards');
 const addBoard = require('./addBoard');
 const deleteBoard = require('./deleteBoard');
-const editBoard = require('./editBoard');
+const updateBoard = require('./updateBoard');
 const { ctrlWrapper } = require('../../decorators')
 
 module.exports = {
-    getBoards: ctrlWrapper(getBoards),
+    getAllBoards: ctrlWrapper(getAllBoards),
     addBoard: ctrlWrapper(addBoard),
-    editBoard: ctrlWrapper(editBoard),
+    updateBoard: ctrlWrapper(updateBoard),
     deleteBoard: ctrlWrapper(deleteBoard),
 }

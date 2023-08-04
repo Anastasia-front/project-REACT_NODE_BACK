@@ -12,14 +12,25 @@ const addBoardSchema = Joi.object({
     'icon-project',
     'icon-star',
     'icon-puzzle-piece',
-  ),
+  ).required(),
   background: Joi.objectId().allow(null),  
 });
 
-const editBoardSchema = Joi.object({
-  //
+const updateBoardSchema = Joi.object({
+  title: Joi.string(),
+  icon: Joi.string().valid(
+    'icon-colors',
+    'icon-container',
+    'icon-hexagon',
+    'icon-lightning',
+    'icon-loading',
+    'icon-project',
+    'icon-star',
+    'icon-puzzle-piece',
+  ),
+  background: Joi.objectId().allow(null),
 });
 
-const boardSchemas = { addBoardSchema, editBoardSchema };
+const boardSchemas = { addBoardSchema, updateBoardSchema };
 
 module.exports = boardSchemas;

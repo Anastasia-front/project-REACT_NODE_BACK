@@ -1,7 +1,7 @@
 const { Board } = require("../../models")
 const { HttpError } = require('../../helpers')
 
-const editBoard = async (req, res) => {
+const updateBoard = async (req, res) => {
     const { id } = req.params;
     const result = await Board.findByIdAndUpdate(id, req.body, { new: true });
     if (!result) {
@@ -10,5 +10,5 @@ const editBoard = async (req, res) => {
     res.json(result);
 };
 
-module.exports = editBoard;
+module.exports = updateBoard;
 

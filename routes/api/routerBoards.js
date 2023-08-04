@@ -12,7 +12,7 @@ routerBoards.get('/', ctrlBoards.getBoards);
 
 routerBoards.post('/', validateBody(boardSchemas.addBoardSchema), ctrlBoards.addBoard);
 
-routerBoards.put('/:id', isValidId, validateBody(boardSchemas.addBoardSchema), ctrlBoards.editBoard);
+routerBoards.put('/:id', isValidId, validateBody(boardSchemas.updateBoardSchema), ctrlBoards.updateBoard);
 
 routerBoards.delete('/:id', isValidId, ctrlBoards.deleteBoard);
 
