@@ -116,7 +116,7 @@
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "User's object",
+          "description": "User's id",
           "required": true,
           "content": {
             "application/json": {
@@ -148,7 +148,7 @@
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Current user's object",
+          "description": "Bearer Token",
           "required": true,
           "content": {
             "application/json": {
@@ -168,11 +168,7 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request (Invalid request body)",
-            "content": {}
-          },
+          },          
           "401": {
             "description": "Not authorized",
             "content": {}
@@ -272,7 +268,7 @@
           "password": {
             "type": "string",
             "description": "User's password",
-            "example": "Qwerty123"
+            "example": "Mango12378"
           }
         }
       },
@@ -293,7 +289,7 @@
           "password": {
             "type": "string",
             "description": "User's password",
-            "example": "Qwerty123"
+            "example": "Mango12378"
           },
           "theme": {
             "type": "string",
@@ -335,7 +331,7 @@
           "password": {
             "type": "string",
             "description": "User's password",
-            "example": "Qwerty123"
+            "example": "Mango12378"
           }
         }
       },
@@ -456,7 +452,7 @@
           "password": {
             "type": "string",
             "description": "User's password",
-            "example": "Qwerty123"
+            "example": "Mango12378"
           },
           "avatarURL": {
             "type": "string",
