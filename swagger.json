@@ -128,14 +128,7 @@
         },
         "responses": {
           "204": {
-            "description": "Logout Successful, No content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LogoutResponse"
-                }
-              }
-            }
+            "description": "Logout Successful, No content"
           },
           "400": {
             "description": "Bad request (Invalid request body)",
@@ -205,22 +198,15 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Successful operation, user updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateUserResponse"
-                }
-              }
-            }
+          "204": {
+            "description": "User updated, No content"
           },
           "400": {
             "description": "Bad request (Invalid request body)",
             "content": {}
           },
-          "404": {
-            "description": "Not found",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           }
         }
@@ -238,7 +224,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserThemeRequest"
+                "$ref": "#/components/schemas/UpdateThemeRequest"
               }
             }
           }
@@ -249,7 +235,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserThemeResponse"
+                  "$ref": "#/components/schemas/UpdateThemeResponse"
                 }
               }
             }
@@ -329,10 +315,10 @@
             "description": "User's token",
             "example": null
           },
-          "userId": {
-            "type": "number",
+          "_id": {
+            "type": "string",
             "description": "User's id",
-            "example": "32143232436545474"
+            "example": "3214d232436cf45474"
           }
         }
       },
@@ -359,7 +345,7 @@
           "accessToken": {
             "type": "string",
             "description": "User's token",
-            "format": "bearer"
+            "format": "Bearer Token"
           },
           "user": {
             "type": "object",
@@ -392,6 +378,121 @@
                 "example": []
               }
             }
+          }
+        }
+      },
+      "LogoutRequest": {
+        "type": "object",
+        "required": ["_id"],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "3214d232436cf45474"
+          }
+        }
+      },
+      "CurrentUserRequest": {
+        "type": "object",
+        "required": ["Authorization"],
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "description": "User's token",
+            "example": "Bearer {Token}"
+          }
+        }
+      },
+      "CurrentUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          },
+          "boards": {
+            "type": "array",
+            "description": "User's boards",
+            "example": []
+          },
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "321b432324dc36545474"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "Qwerty123"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          },
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "3214d232436cf45474"
+          }
+        }
+      },
+      "UpdateThemeRequest": {
+        "type": "object",
+        "properties": {
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "enum": ["dark", "light", "violet"],
+            "example": "violet"
+          },
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "3214d232436cf45474"
+          }
+        }
+      },
+      "UpdateThemeResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "Theme changed"
           }
         }
       }
