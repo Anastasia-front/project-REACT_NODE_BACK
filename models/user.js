@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
+const { array } = require("../constants");
+const { themes } = array;
 
 const userSchema = new Schema(
   {
@@ -18,7 +20,7 @@ const userSchema = new Schema(
     },
     theme: {
       type: String,
-      enum: ["light", "dark", "violet"],
+      enum: [...themes],
       default: "dark",
     },
     avatarURL: {
