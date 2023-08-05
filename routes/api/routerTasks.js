@@ -2,16 +2,16 @@ const express = require("express");
 
 const { ctrlTasks } = require("../../controllers");
 
-const { validateBody, isValidId } = require('../../middlewares');
+const { isAuthorized, validateBody, isValidId } = require('../../middlewares');
 
 const { taskSchemas } = require('../../schemas')
 
 const routerTasks = express.Router();
 
-routerTasks.post('/', validateBody(taskSchemas.addTaskSchema), ctrlTasks.addTask);
+routerTasks.post('/', isAuthorized, validateBody(taskSchemas.addTaskSchema), ctrlTasks.addTask);
 
-routerTasks.put('/:id', isValidId, validateBody(taskSchemas.updateTaskSchema), ctrlTasks.updateTask);
+routerTasks.put('/:id', isAuthorized, isValidId, validateBody(taskSchemas.updateTaskSchema), ctrlTasks.updateTask);
 
-routerTasks.delete('/:id', isValidId, ctrlTasks.deleteTask);
+routerTasks.delete('/:id', isAuthorized, isValidId, ctrlTasks.deleteTask);
 
 module.exports = routerTasks;

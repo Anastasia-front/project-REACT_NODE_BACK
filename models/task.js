@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
 
+const { array, regExp } = require('../constants')
+
 const taskSchema = new Schema(
   {
     title: {
@@ -13,12 +15,12 @@ const taskSchema = new Schema(
     },
     priority: {
       type: String,
-      enum: ['without', 'low', 'medium', 'high'],
-      default: 'without',
+      enum: array.priorities,
+      default: array.priorities[0],
     },
     deadline: {
       type: String,
-      match: /^\d{8}$/,
+      match: regExp.deadline,
       default: null,
     },
     column: {

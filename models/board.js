@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
+const { array } = require('../constants')
 
 const boardSchema = new Schema(
   {
@@ -9,17 +10,8 @@ const boardSchema = new Schema(
     },
     icon: {
       type: String,
-      enum: [
-        'icon-colors',
-        'icon-container',
-        'icon-hexagon',
-        'icon-lightning',
-        'icon-loading',
-        'icon-project',
-        'icon-star',
-        'icon-puzzle-piece',
-      ],
-      default: 'icon-project',
+      enum: array.icons,
+      default: array.icons[0],
     },
     background: {
       type: Schema.Types.ObjectId,

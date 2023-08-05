@@ -6,7 +6,7 @@ const { SECRET_KEY } = process.env;
 
 const isAuthorized = async (req, res, next) => {
     try {
-        const [_, token] = (req.headers.authorization || '').split(' ');
+        const [, token] = (req.headers.authorization || '').split(' ');
         const isValidToken = jwt.verify(token, SECRET_KEY);
         
         const user = await User.findOne({ _id: isValidToken.id });
