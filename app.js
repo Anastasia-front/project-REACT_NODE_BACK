@@ -13,7 +13,7 @@ const { routerAuth } = require("./routes/api");
 // const routerBoards = require("./routes/api");
 // const routerColumns = require("./routes/api");
 // const routerTasks = require("./routes/api");
-const routerHelp = require("./routes/api/routerHelp");
+const { routerHelp } = require("./routes/api");
 
 app.use(logger(formatsLogger));
 app.use(cors());
