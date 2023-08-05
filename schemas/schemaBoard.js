@@ -4,10 +4,10 @@ const addBoardSchema = Joi.object({
   //
 });
 
-const editBoardSchema = Joi.object({
+const updateBoardSchema = Joi.object({
   //
 });
 
-const boardSchemas = { addBoardSchema, editBoardSchema };
+const boardSchemas = { addBoardSchema, updateBoardSchema };
 
 module.exports = boardSchemas;
