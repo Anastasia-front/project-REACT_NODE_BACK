@@ -1,5 +1,4 @@
 const cloudinary = require("cloudinary").v2;
-<<<<<<< Updated upstream
 const { User } = require("../models");
 
 cloudinary.config({
@@ -30,25 +29,6 @@ const uploadToCloud = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Image processing error" });
   }
-=======
-
-cloudinary.config({
-  secure: true,
-  cloud_name: dyykzkgyc,
-  api_key: 468927147681242,
-  api_secret: ye4vfR10v144ycD5 - eXRxf7nt5k,
-});
-
-const uploadToCloud = async (image) => {
-  const options = {
-    use_filename: true,
-    unique_filename: false,
-    overwrite: true,
-  };
-
-  const result = await cloudinary.uploader.upload(image, options);
-  return result.secure_url;
->>>>>>> Stashed changes
 };
 
 module.exports = uploadToCloud;
