@@ -256,18 +256,18 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
             "example": "Mango"
           },
           "email": {
             "type": "string",
-            "description": "User's email",
+            "description": "User's email. It must contain only Latin letters; may include numbers, letters in different case.",
             "format": "email",
             "example": "mango@email.com"
           },
           "password": {
             "type": "string",
-            "description": "User's password",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
             "example": "Mango12378"
           }
         }
@@ -377,14 +377,14 @@
           }
         }
       },
-      "LogoutRequest": {
+      "LogoutRequest": {        
         "type": "object",
-        "required": ["_id"],
+        "required": ["Authorization"],
         "properties": {
-          "_id": {
+          "Authorization": {
             "type": "string",
-            "description": "User's id",
-            "example": "3214d232436cf45474"
+            "description": "User's token",
+            "example": "Bearer {Token}"
           }
         }
       },
@@ -440,45 +440,36 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
             "example": "Mango"
           },
           "email": {
             "type": "string",
-            "description": "User's email",
+            "description": "User's email. It must contain only Latin letters; may include numbers, letters in different case.",
             "format": "email",
             "example": "mango@email.com"
           },
           "password": {
             "type": "string",
-            "description": "User's password",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
             "example": "Mango12378"
           },
           "avatarURL": {
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },
-          "_id": {
-            "type": "string",
-            "description": "User's id",
-            "example": "3214d232436cf45474"
           }
         }
       },
       "UpdateThemeRequest": {
         "type": "object",
+        "required": ["theme"],
         "properties": {
           "theme": {
             "type": "string",
-            "description": "User's theme",
+            "description": "User's theme. Theme field must be one of the next value - light, dark or violet.",
             "enum": ["dark", "light", "violet"],
             "example": "violet"
-          },
-          "_id": {
-            "type": "string",
-            "description": "User's id",
-            "example": "3214d232436cf45474"
           }
         }
       },
