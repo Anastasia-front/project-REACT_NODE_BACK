@@ -35,8 +35,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "User registration",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
+        "parameters": [],        
         "requestBody": {
           "description": "Registration's object",
           "required": true,
@@ -74,8 +73,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "User login",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
+        "parameters": [],       
         "requestBody": {
           "description": "Login's object",
           "required": true,
