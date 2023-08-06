@@ -1,6 +1,5 @@
 const { helpSchema } = require("../../schemas");
 const { BadRequestError, sendEmail } = require("../../helpers");
-require("dotenv").config();
 
 const { SUPPORT_DEPARTMENT } = process.env;
 

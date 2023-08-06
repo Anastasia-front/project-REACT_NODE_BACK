@@ -16,8 +16,8 @@ const helpSchema = Joi.object({
     .required()
     .messages({
       "any.required": message.fieldRequired("comment"),
-      "string.min": `Comment should have a minimum length of {#limit}`,
-      "string.max": `Comment should have a maximum length of {#limit}`,
+      "string.min": `Comment should have a minimum length of {#limit} symbols`,
+      "string.max": `Comment should have a maximum length of {#limit} symbols`,
     }),
 });
 
