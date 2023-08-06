@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "2.0.2",
-    "title": "Swagger test",
-    "description": "Showing off swagger-ui-express",
+    "title": "Swagger Task Pro",
+    "description": "Showing off Task Pro work",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -11,20 +11,31 @@
   },
   "consumes": ["application/json"],
   "produces": ["application/json"],
-  "servers": [{ "url": "http://localhost:3000" }],
+  "servers": [{ "url": "https://project-react-node-back.onrender.com" }],
   "tags": [
     {
-      "name": "Auth",
-      "description": "Authorization endpoints"
+      "name": "Users",
+      "description": "Users endpoints"
+    },
+    {
+      "name": "Boards",
+      "description": "Boards endpoints"
+    },
+    {
+      "name": "Columns",
+      "description": "Columns endpoints"
+    },
+    {
+      "name": "Tasks",
+      "description": "Tasks endpoints"
     }
   ],
   "paths": {
-    "/auth/register": {
+    "api/users/register": {
       "post": {
-        "tags": ["Auth"],
+        "tags": ["Users"],
         "summary": "User registration",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Registration's object",
           "required": true,
@@ -38,7 +49,7 @@
         },
         "responses": {
           "201": {
-            "description": "Successful operation",
+            "description": "User created, registration successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -48,11 +59,187 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request (Invalid request body)",
             "content": {}
           },
           "409": {
-            "description": "Provided email already exists",
+            "description": "Conflict (Provided email already exists)",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "User login",
+        "parameters": [],
+        "requestBody": {
+          "description": "Login's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "401": {
+            "description": "Not authorized (Email (or Password) is wrong)",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "User logout",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "User's id",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Logout Successful, No content"
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/current": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get current user",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Bearer Token",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, get current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentUserResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/update": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "User updating",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Update user's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "User updated, No content"
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "api/users/theme": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "User theme",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Update theme's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateThemeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, theme updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
             "content": {}
           }
         }
@@ -63,41 +250,236 @@
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
-        "required": ["email", "password"],
+        "required": ["name", "email", "password"],
         "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain space, numbers, signs, letters in different case",
+            "example": "Mango"
+          },
           "email": {
             "type": "string",
-            "description": "User's email",
-            "format": "email"
+            "description": "User's email. It must contain only Latin letters; may include numbers, letters in different case",
+            "format": "email",
+            "example": "mango@email.com"
           },
           "password": {
             "type": "string",
-            "description": "User's password",
-            "example": "qwerty123"
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
+            "example": "Mango12378"
           }
         }
       },
       "RegistrationResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string",
-              "description": "User's email",
-              "format": "email"
-            },
-            "userId": {
-              "type": "number",
-              "description": "User's id",
-              "example": "32143232436545474"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "Mango12378"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          },
+          "boards": {
+            "type": "array",
+            "description": "User's boards",
+            "example": []
+          },
+          "accessToken": {
+            "type": "string",
+            "description": "User's token",
+            "example": null
+          },
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "3214d232436cf45474"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email.  It must contain only Latin letters; may include numbers, letters in different case",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
+            "example": "Mango12378"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "User's token",
+            "format": "Bearer Token"
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name",
+                "example": "Mango"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "format": "email",
+                "example": "mango@email.com"
+              },
+              "theme": {
+                "type": "string",
+                "description": "User's theme",
+                "enum": ["dark", "violet", "light"],
+                "example": "dark"
+              },
+              "avatarURL": {
+                "type": "string",
+                "description": "User's avatar",
+                "example": ""
+              },
+              "boards": {
+                "type": "array",
+                "description": "User's boards",
+                "example": []
+              }
             }
           }
-        },
-        "example": [
-          { "email": "1@gmail.com", "userId": "1" },
-          { "email": "2@gmail.com", "userId": "2" }
-        ]
+        }
+      },
+      "LogoutRequest": {
+        "type": "object",
+        "required": ["Authorization"],
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "description": "User's token",
+            "example": "Bearer {Token}"
+          }
+        }
+      },
+      "CurrentUserRequest": {
+        "type": "object",
+        "required": ["Authorization"],
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "description": "User's token",
+            "example": "Bearer {Token}"
+          }
+        }
+      },
+      "CurrentUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          },
+          "boards": {
+            "type": "array",
+            "description": "User's boards",
+            "example": []
+          },
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "321b432324dc36545474"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email. It must contain only Latin letters; may include numbers, letters in different case",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
+            "example": "Mango12378"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          }
+        }
+      },
+      "UpdateThemeRequest": {
+        "type": "object",
+        "required": ["theme"],
+        "properties": {
+          "theme": {
+            "type": "string",
+            "description": "User's theme. Theme field must be one of the next value - light, dark or violet",
+            "enum": ["dark", "light", "violet"],
+            "example": "violet"
+          }
+        }
+      },
+      "UpdateThemeResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "Theme changed"
+          }
+        }
       }
     },
     "securitySchemes": {
