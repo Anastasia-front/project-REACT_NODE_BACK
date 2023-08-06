@@ -1,21 +1,24 @@
 const Joi = require("joi");
 
-const { regExp, array } = require("../constants");
+const { regExp, array, message } = require("../constants");
 const { themes } = array;
 
 const loginSchema = Joi.object({
-  email: Joi.string().pattern(regExp.email).required().messages({
-    "any.required": "Missing required email field",
-    "string.pattern.base": "Invalid email field",
-  }),
+  email: Joi.string()
+    .pattern(regExp.email)
+    .required()
+    .messages({
+      "any.required": `${message.fieldRequired("email")}`,
+      "string.pattern.base": `${message.emailInvalid}`,
+    }),
   password: Joi.string()
     .min(8)
     .max(64)
     .pattern(regExp.password)
     .required()
     .messages({
-      "any.required": "Missing required password field",
-      "string.pattern.base": "Invalid password field",
+      "any.required": `${message.fieldRequired("password")}`,
+      "string.pattern.base": `${message.passwordInvalid}`,
     }),
 });
 
@@ -23,43 +26,50 @@ const registerSchema = Joi.object({
   name: Joi.string()
     .min(2)
     .max(32)
-    .pattern(regExp.onlyLatin)
+    .pattern(regExp.name)
     .required()
     .messages({
-      "any.required": "Missing required name field",
-      "string.pattern.base":
-        "Invalid name field. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
+      "any.required": `${message.fieldRequired("name")}`,
+      "string.pattern.base": `${message.nameInvalid}`,
     }),
-  email: Joi.string().pattern(regExp.email).required().messages({
-    "any.required": "Missing required email field",
-    "string.pattern.base":
-      "Invalid email field. It must contain only Latin letters and meet all requirements for mail; may include numbers, letters in different case.",
-  }),
+  email: Joi.string()
+    .pattern(regExp.email)
+    .required()
+    .messages({
+      "any.required": `${message.fieldRequired("email")}`,
+      "string.pattern.base": `${message.emailInvalid}`,
+    }),
   password: Joi.string()
     .min(8)
     .max(64)
     .pattern(regExp.password)
     .required()
     .messages({
-      "any.required": "Missing required password field",
-      "string.pattern.base":
-        "Invalid password field. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
+      "any.required": `${message.fieldRequired("password")}`,
+      "string.pattern.base": `${message.passwordInvalid}`,
     }),
 });
 
 const updateSchema = Joi.object({
-  name: Joi.string().min(2).max(32).pattern(regExp.onlyLatin).messages({
-    "string.pattern.base":
-      "Invalid name field. It must contain only Latin letters; may contain numbers, signs, letters in different case.",
-  }),
-  email: Joi.string().pattern(regExp.email).messages({
-    "string.pattern.base":
-      "Invalid email field. It must contain only Latin letters and meet all requirements for mail; may include numbers, letters in different case.",
-  }),
-  password: Joi.string().min(8).max(64).pattern(regExp.password).messages({
-    "string.pattern.base":
-      "Invalid password field. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
-  }),
+  name: Joi.string()
+    .min(2)
+    .max(32)
+    .pattern(regExp.name)
+    .messages({
+      "string.pattern.base": `${message.nameInvalid}`,
+    }),
+  email: Joi.string()
+    .pattern(regExp.email)
+    .messages({
+      "string.pattern.base": `${message.emailInvalid}`,
+    }),
+  password: Joi.string()
+    .min(8)
+    .max(64)
+    .pattern(regExp.password)
+    .messages({
+      "string.pattern.base": `${message.passwordInvalid}`,
+    }),
   avatarURL: Joi.string(),
 });
 
@@ -69,7 +79,7 @@ const updateTheme = Joi.object({
     .insensitive()
     .required()
     .messages({
-      "any.required": "Missing required theme field",
+      "any.required": `${message.fieldRequired("theme")}`,
       "any.only": `Theme field must be one of the next value - ${themes.join(
         ", "
       )}`,
