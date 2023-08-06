@@ -21,7 +21,7 @@ const userSchema = new Schema(
     theme: {
       type: String,
       enum: [...themes],
-      default: `${themes[1]}`,
+      default: themes[1],
     },
     avatarURL: {
       type: String,
