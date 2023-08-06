@@ -1,17 +1,13 @@
 const { helpSchema } = require("../../schemas");
-const { HttpError, sendEmail } = require("../../helpers");
+const { BadRequestError, sendEmail } = require("../../helpers");
 require("dotenv").config();
 
 const { SUPPORT_DEPARTMENT } = process.env;
 
 const help = async (req, res) => {
   const { error } = helpSchema.validate(req.body, { abortEarly: false });
-  if (error) {
-    const errorMessage = error.details
-      .map((detail) => detail.message)
-      .join("; ");
-    throw HttpError(400, errorMessage);
-  }
+  BadRequestError(error);
+
   const { email, comment } = req.body;
 
   const helpEmail = {
