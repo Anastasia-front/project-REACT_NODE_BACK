@@ -1,10 +1,11 @@
 const cloudinary = require("cloudinary").v2;
 const { User } = require("../models");
+const { CLOUDINARY_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET } = process.env;
 
 cloudinary.config({
-  cloud_name: "dyykzkgyc",
-  api_key: "468927147681242",
-  api_secret: "ye4vfR10v144ycD5-eXRxf7nt5k",
+  cloud_name: CLOUDINARY_NAME,
+  api_key: CLOUDINARY_KEY,
+  api_secret: CLOUDINARY_SECRET,
 });
 
 const uploadToCloud = async (req, res) => {
