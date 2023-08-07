@@ -243,7 +243,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space.",
             "example": "Mango12378"
           }
         }
@@ -276,12 +276,7 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },
-          "boards": {
-            "type": "array",
-            "description": "User's boards",
-            "example": []
-          },
+          },          
           "accessToken": {
             "type": "string",
             "description": "User's token",
@@ -343,12 +338,7 @@
                 "type": "string",
                 "description": "User's avatar",
                 "example": ""
-              },
-              "boards": {
-                "type": "array",
-                "description": "User's boards",
-                "example": []
-              }
+              }              
             }
           }
         }
@@ -376,12 +366,7 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },
-          "boards": {
-            "type": "array",
-            "description": "User's boards",
-            "example": []
-          },
+          },          
           "_id": {
             "type": "string",
             "description": "User's id",
@@ -405,7 +390,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space.",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space.",
             "example": "Mango12378"
           },
           "avatarURL": {
