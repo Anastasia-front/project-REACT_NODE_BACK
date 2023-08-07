@@ -11,8 +11,9 @@ const register = async (req, res, next) => {
   const { name, email, password } = value;
   const salt = await bcrypt.genSalt();
   const hashedPassword = await bcrypt.hash(password, salt);
-
-  BadRequestError(error);
+  if (error) {
+    BadRequestError(error);
+  }
 
   const userEmail = await User.findOne({ email });
   if (userEmail) {
