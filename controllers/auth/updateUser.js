@@ -2,13 +2,15 @@ const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 
 const { authSchema } = require("../../schemas");
-const { HttpError } = require("../../helpers");
+const { BadRequestError } = require("../../helpers");
 
 const updateUser = async (req, res, next) => {
   const { user } = req;
-  const { value, error } = authSchema.updateSchema.validate(req.body);
+  const { value, error } = authSchema.updateSchema.validate(req.body, {
+    abortEarly: false,
+  });
   if (error) {
-    throw HttpError(400, `Invalid ${error.details[0].context.label} field`);
+    BadRequestError(error);
   }
 
   const { name, email, password, avatarURL } = value;
