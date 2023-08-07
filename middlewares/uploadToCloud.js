@@ -1,4 +1,6 @@
 const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
 const { User } = require("../models");
 const { CLOUDINARY_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET } = process.env;
 
@@ -32,4 +34,14 @@ const uploadToCloud = async (req, res) => {
   }
 };
 
-module.exports = uploadToCloud;
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: "avatars",
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+module.exports = { upload, uploadToCloud };
