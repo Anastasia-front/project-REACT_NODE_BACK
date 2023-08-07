@@ -10,7 +10,9 @@ const login = async (req, res, next) => {
   const { value, error } = authSchema.loginSchema.validate(req.body, {
     abortEarly: false,
   });
-  BadRequestError(error);
+  if (error) {
+    BadRequestError(error);
+  }
 
   const { email, password } = value;
   const user = await User.findOne({ email });

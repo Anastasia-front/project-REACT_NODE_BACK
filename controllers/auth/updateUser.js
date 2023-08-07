@@ -9,7 +9,9 @@ const updateUser = async (req, res, next) => {
   const { value, error } = authSchema.updateSchema.validate(req.body, {
     abortEarly: false,
   });
-  BadRequestError(error);
+  if (error) {
+    BadRequestError(error);
+  }
 
   const { name, email, password, avatarURL } = value;
 

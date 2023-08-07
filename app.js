@@ -9,7 +9,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const { routerAuth, routerBoards, routerColumns, routerTasks } = require("./routes/api");
+const { routerAuth, routerBoards, routerColumns, routerTasks, routerHelp  } = require("./routes/api");
 
 app.use(logger(formatsLogger));
 app.use(cors());
@@ -20,6 +20,7 @@ app.use("/api/users", routerAuth);
 app.use("/api/boards", routerBoards);
 app.use("/api/columns", routerColumns);
 app.use("/api/tasks", routerTasks);
+app.use("/api/help", routerHelp);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not Found" });
