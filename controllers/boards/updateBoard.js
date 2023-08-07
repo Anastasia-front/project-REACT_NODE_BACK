@@ -1,9 +1,14 @@
 const { Board } = require("../../models")
-const { HttpError } = require('../../helpers')
+const { boardSchemas } = require("../../schemas");
+const { HttpError, BadRequestError } = require('../../helpers')
 
 const updateBoard = async (req, res) => {
+    const { value, error } = boardSchemas.addBoardSchema.validate(req.body, {
+        abortEarly: false,
+    });
+    BadRequestError(error);
     const { id } = req.params;
-    const result = await Board.findByIdAndUpdate(id, req.body, { new: true });
+    const result = await Board.findByIdAndUpdate(id, value, { new: true });
     if (!result) {
         throw HttpError(404, `Board ${id} not found`);
     }
@@ -11,4 +16,3 @@ const updateBoard = async (req, res) => {
 };
 
 module.exports = updateBoard;
-

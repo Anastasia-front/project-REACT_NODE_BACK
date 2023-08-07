@@ -7,7 +7,7 @@ const addTaskSchema = Joi.object({
   title: Joi.string().required(),
   description: Joi.string().required(),
   priority: Joi.string().valid(...array.priorities),
-  deadline: Joi.string().regex(regExp.deadline).allow(null),
+  deadline: Joi.string().pattern(regExp.deadline).allow(null),
   column: Joi.objectId().required(),
 });
 
@@ -15,7 +15,7 @@ const updateTaskSchema = Joi.object({
   title: Joi.string(),
   description: Joi.string(),
   priority: Joi.string().valid(...array.priorities),
-  deadline: Joi.string().regex(regExp.deadline).allow(null),
+  deadline: Joi.string().pattern(regExp.deadline).allow(null),
 });
 
 const taskSchemas = { addTaskSchema, updateTaskSchema };

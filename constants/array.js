@@ -10,5 +10,22 @@ const icons = [
     'icon-star',
     'icon-puzzle-piece'
 ];
+const backgrounds = [
+    'airBalloon',
+    'blue',
+    'cappadocia',
+    'flowers',
+    'gorge',
+    'greens',
+    'moon',
+    'mountains',
+    'rocksAndSea',
+    'sea',
+    'semiMoon',
+    'trailer',
+    'tree',
+    'yacht',
+    'violetSphere'
+]
 
-module.exports = { themes, priorities, icons };
+module.exports = { themes, priorities, icons, backgrounds };
