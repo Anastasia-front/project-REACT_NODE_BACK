@@ -1,6 +1,5 @@
 const express = require("express");
 
-const { ctrlWrapper } = require("../../decorators");
 const { ctrlAuth } = require("../../controllers");
 const { isAuthorized, upload, uploadToCloud } = require("../../middlewares");
 
