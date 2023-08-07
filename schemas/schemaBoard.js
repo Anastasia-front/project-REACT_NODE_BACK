@@ -11,7 +11,7 @@ const addBoardSchema = Joi.object({
 const updateBoardSchema = Joi.object({
   title: Joi.string(),
   icon: Joi.string().valid(...array.icons),
-  background: Joi.string().allow(null),
+  background: Joi.string().valid(...array.backgrounds).allow(null),
 });
 
 const boardSchemas = { addBoardSchema, updateBoardSchema };

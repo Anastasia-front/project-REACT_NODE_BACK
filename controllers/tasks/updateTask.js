@@ -3,10 +3,10 @@ const { taskSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
 const updateTask = async (req, res) => {
-    const { value, error } = taskSchemas.addTaskSchema.validate(req.body, {
+    const { value, error } = taskSchemas.updateTaskSchema.validate(req.body, {
         abortEarly: false,
     });
-    BadRequestError(error);
+    if (error) BadRequestError(error);
     const { id } = req.params;
     const result = await Task.findByIdAndUpdate(id, value, { new: true });
     if (!result) {

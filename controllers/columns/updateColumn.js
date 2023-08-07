@@ -3,10 +3,10 @@ const { columnSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
 const updateColumn = async (req, res) => {
-    const { value, error } = columnSchemas.addColumnSchema.validate(req.body, {
+    const { value, error } = columnSchemas.updateColumnSchema.validate(req.body, {
         abortEarly: false,
     });
-    BadRequestError(error);
+    if (error) BadRequestError(error);
     const { id } = req.params;
     const { title } = value;
     const result = await Column.findByIdAndUpdate(id, { title }, { new: true });

@@ -3,10 +3,10 @@ const { boardSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
 const updateBoard = async (req, res) => {
-    const { value, error } = boardSchemas.addBoardSchema.validate(req.body, {
+    const { value, error } = boardSchemas.updateBoardSchema.validate(req.body, {
         abortEarly: false,
     });
-    BadRequestError(error);
+    if (error) BadRequestError(error);
     const { id } = req.params;
     const result = await Board.findByIdAndUpdate(id, value, { new: true });
     if (!result) {
