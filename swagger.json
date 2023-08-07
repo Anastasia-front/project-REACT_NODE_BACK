@@ -31,7 +31,7 @@
     }
   ],
   "paths": {
-    "api/users/register": {
+    "/api/users/register": {
       "post": {
         "tags": ["Users"],
         "summary": "User registration",
@@ -69,7 +69,7 @@
         }
       }
     },
-    "api/users/login": {
+    "/api/users/login": {
       "post": {
         "tags": ["Users"],
         "summary": "User login",
@@ -107,23 +107,12 @@
         }
       }
     },
-    "api/users/logout": {
+    "/api/users/logout": {
       "post": {
         "tags": ["Users"],
         "summary": "User logout",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "User's id",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LogoutRequest"
-              }
-            }
-          }
-        },
+        "security": [{ "Bearer": [] }],        
         "responses": {
           "204": {
             "description": "Logout Successful, No content"
@@ -139,23 +128,12 @@
         }
       }
     },
-    "api/users/current": {
+    "/api/users/current": {
       "get": {
         "tags": ["Users"],
         "summary": "Get current user",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "Bearer Token",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CurrentUserRequest"
-              }
-            }
-          }
-        },
+        "security": [{ "Bearer": [] }],        
         "responses": {
           "200": {
             "description": "Successful operation, get current user",
@@ -174,7 +152,7 @@
         }
       }
     },
-    "api/users/update": {
+    "/api/users/update": {
       "patch": {
         "tags": ["Users"],
         "summary": "User updating",
@@ -206,8 +184,8 @@
         }
       }
     },
-    "api/users/theme": {
-      "patch": {
+    "/api/users/theme": {
+      "put": {
         "tags": ["Users"],
         "summary": "User theme",
         "parameters": [],
@@ -374,29 +352,7 @@
             }
           }
         }
-      },
-      "LogoutRequest": {        
-        "type": "object",
-        "required": ["Authorization"],
-        "properties": {
-          "Authorization": {
-            "type": "string",
-            "description": "User's token",
-            "example": "Bearer {Token}"
-          }
-        }
-      },
-      "CurrentUserRequest": {
-        "type": "object",
-        "required": ["Authorization"],
-        "properties": {
-          "Authorization": {
-            "type": "string",
-            "description": "User's token",
-            "example": "Bearer {Token}"
-          }
-        }
-      },
+      },      
       "CurrentUserResponse": {
         "type": "object",
         "properties": {
