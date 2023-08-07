@@ -207,7 +207,7 @@
       }
     },
     "api/users/theme": {
-      "patch": {
+      "put": {
         "tags": ["Users"],
         "summary": "User theme",
         "parameters": [],
