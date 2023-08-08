@@ -1,13 +1,15 @@
 const Joi = require("joi");
+Joi.objectId = require('joi-objectid')(Joi);
 
 const addColumnSchema = Joi.object({
-  //
+  title: Joi.string().required(),
+  board: Joi.objectId().required(),
 });
 
-const editColumnSchema = Joi.object({
-  //
+const updateColumnSchema = Joi.object({
+  title: Joi.string().required(),
 });
 
-const columnSchemas = { addColumnSchema, editColumnSchema };
+const columnSchemas = { addColumnSchema, updateColumnSchema };
 
 module.exports = columnSchemas;
