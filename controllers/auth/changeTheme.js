@@ -7,9 +7,7 @@ const changeTheme = async (req, res, next) => {
   const { value, error } = authSchema.updateTheme.validate(req.body, {
     abortEarly: false,
   });
-  if (error) {
-    BadRequestError(error);
-  }
+  if (error) BadRequestError(error);
 
   await User.findOneAndUpdate({ _id: user._id }, value);
   res.json({ message: "Theme changed" });
