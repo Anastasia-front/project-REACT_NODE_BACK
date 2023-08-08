@@ -1,4 +1,4 @@
-const { Board } = require("../../models")
+const { Board, Background } = require("../../models")
 const { boardSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
@@ -7,6 +7,11 @@ const updateBoard = async (req, res) => {
         abortEarly: false,
     });
     if (error) BadRequestError(error);
+    if (value.background) {
+        const { background:title } = value;
+        const { _id } = await Background.findOne({ title })
+        value.background = _id;
+    }
     const { id } = req.params;
     const result = await Board.findByIdAndUpdate(id, value, { new: true });
     if (!result) {

@@ -51,6 +51,13 @@ const getCompleteBoard = async (req, res) => {
             $addFields: {
                 owner: { $arrayElemAt: ["$ownerArr", 0] },
                 background: { $arrayElemAt: ["$backgroundArr", 0] },
+                columns: {
+                    $cond: {
+                        if: { $eq: ["$columnOrder", []] },
+                        then: "$REMOVE",
+                        else: "$columns",
+                    },
+                },
             },
         },
         {
