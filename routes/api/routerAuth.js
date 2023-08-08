@@ -1,16 +1,21 @@
 const express = require("express");
 
-const { ctrlWrapper } = require('../../decorators');
 const { ctrlAuth } = require("../../controllers");
-const { isAuthorized } = require('../../middlewares');
+const { isAuthorized, upload, uploadToCloud } = require("../../middlewares");
 
 const routerAuth = express.Router();
 
-routerAuth.post('/register', ctrlWrapper(ctrlAuth.register));
-routerAuth.post('/login', ctrlWrapper(ctrlAuth.login));
-routerAuth.get('/current', isAuthorized, ctrlWrapper(ctrlAuth.currentUser));
-routerAuth.patch('/update', isAuthorized, ctrlWrapper(ctrlAuth.updateUser));
-routerAuth.patch('/theme', isAuthorized, ctrlWrapper(ctrlAuth.changeTheme))
-routerAuth.post('/logout', isAuthorized, ctrlWrapper(ctrlAuth.logout));
+routerAuth.post("/register", ctrlAuth.register);
+routerAuth.post("/login", ctrlAuth.login);
+routerAuth.get("/current", isAuthorized, ctrlAuth.currentUser);
+routerAuth.patch("/update", isAuthorized, ctrlAuth.updateUser);
+routerAuth.put("/theme", isAuthorized, ctrlAuth.changeTheme);
+routerAuth.post("/logout", isAuthorized, ctrlAuth.logout);
+routerAuth.post(
+  "/avatar",
+  isAuthorized,
+  upload.single("avatar"),
+  uploadToCloud
+);
 
 module.exports = routerAuth;

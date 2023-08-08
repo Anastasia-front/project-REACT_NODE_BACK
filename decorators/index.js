@@ -1,3 +1,3 @@
-const ctrlWrapper = require("../decorators/ctrlWrapper");
+const ctrlWrapper = require("./ctrlWrapper");
 
 module.exports = { ctrlWrapper };
