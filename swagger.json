@@ -31,7 +31,7 @@
     }
   ],
   "paths": {
-    "api/users/register": {
+    "/api/users/register": {
       "post": {
         "tags": ["Users"],
         "summary": "User registration",
@@ -69,7 +69,7 @@
         }
       }
     },
-    "api/users/login": {
+    "/api/users/login": {
       "post": {
         "tags": ["Users"],
         "summary": "User login",
@@ -107,23 +107,12 @@
         }
       }
     },
-    "api/users/logout": {
+    "/api/users/logout": {
       "post": {
         "tags": ["Users"],
         "summary": "User logout",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "User's id",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LogoutRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "204": {
             "description": "Logout Successful, No content"
@@ -139,23 +128,12 @@
         }
       }
     },
-    "api/users/current": {
+    "/api/users/current": {
       "get": {
         "tags": ["Users"],
         "summary": "Get current user",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "Bearer Token",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CurrentUserRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful operation, get current user",
@@ -174,8 +152,8 @@
         }
       }
     },
-    "api/users/update": {
-      "patch": {
+    "/api/users/update": {
+      "put": {
         "tags": ["Users"],
         "summary": "User updating",
         "parameters": [],
@@ -192,6 +170,16 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "Successful operation, user updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserResponse"
+                }
+              }
+            }
+          },
           "204": {
             "description": "User updated, No content"
           },
@@ -206,14 +194,14 @@
         }
       }
     },
-    "api/users/theme": {
-      "put": {
+    "/api/users/theme": {
+      "patch": {
         "tags": ["Users"],
         "summary": "User theme",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Update theme's object",
+          "description": "User theme updating",
           "required": true,
           "content": {
             "application/json": {
@@ -265,7 +253,7 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space.",
             "example": "Mango12378"
           }
         }
@@ -298,11 +286,6 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },
-          "boards": {
-            "type": "array",
-            "description": "User's boards",
-            "example": []
           },
           "accessToken": {
             "type": "string",
@@ -365,35 +348,8 @@
                 "type": "string",
                 "description": "User's avatar",
                 "example": ""
-              },
-              "boards": {
-                "type": "array",
-                "description": "User's boards",
-                "example": []
               }
             }
-          }
-        }
-      },
-      "LogoutRequest": {
-        "type": "object",
-        "required": ["Authorization"],
-        "properties": {
-          "Authorization": {
-            "type": "string",
-            "description": "User's token",
-            "example": "Bearer {Token}"
-          }
-        }
-      },
-      "CurrentUserRequest": {
-        "type": "object",
-        "required": ["Authorization"],
-        "properties": {
-          "Authorization": {
-            "type": "string",
-            "description": "User's token",
-            "example": "Bearer {Token}"
           }
         }
       },
@@ -421,11 +377,6 @@
             "description": "User's avatar",
             "example": ""
           },
-          "boards": {
-            "type": "array",
-            "description": "User's boards",
-            "example": []
-          },
           "_id": {
             "type": "string",
             "description": "User's id",
@@ -449,8 +400,34 @@
           },
           "password": {
             "type": "string",
-            "description": "User's password. It must contain only Latin letters, at least one uppercase, lowercase letter and a number; does not contain a space",
+            "description": "User's password. It must contain only Latin letters; may contain numbers, signs, letters in different case; does not contain a space",
             "example": "Mango12378"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          }
+        }
+      },
+      "UpdateUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
           },
           "avatarURL": {
             "type": "string",
