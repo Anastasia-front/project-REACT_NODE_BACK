@@ -503,8 +503,9 @@
         "properties": {
           "avatarURL": {
             "type": "string",
-            "description": "User's avatar",            
-            "example": "violet"
+            "scheme": "http",
+            "description": "User's avatar",                      
+            "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691507449/task-pro/avatars/64d132a8bc59b83c60b35e6b_avatar.heic"
           }
         }
       },
