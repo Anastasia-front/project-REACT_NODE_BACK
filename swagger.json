@@ -112,7 +112,7 @@
         "tags": ["Users"],
         "summary": "User logout",
         "parameters": [],
-        "security": [{ "Bearer": [] }],        
+        "security": [{ "Bearer": [] }],
         "responses": {
           "204": {
             "description": "Logout Successful, No content"
@@ -133,7 +133,7 @@
         "tags": ["Users"],
         "summary": "Get current user",
         "parameters": [],
-        "security": [{ "Bearer": [] }],        
+        "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
             "description": "Successful operation, get current user",
@@ -286,7 +286,7 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },          
+          },
           "accessToken": {
             "type": "string",
             "description": "User's token",
@@ -348,11 +348,11 @@
                 "type": "string",
                 "description": "User's avatar",
                 "example": ""
-              }              
+              }
             }
           }
         }
-      },      
+      },
       "CurrentUserResponse": {
         "type": "object",
         "properties": {
@@ -376,7 +376,7 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },          
+          },
           "_id": {
             "type": "string",
             "description": "User's id",
@@ -428,7 +428,7 @@
             "type": "string",
             "description": "User's theme",
             "example": "dark"
-          },          
+          },
           "avatarURL": {
             "type": "string",
             "description": "User's avatar",
@@ -457,7 +457,8 @@
             "example": "Theme changed"
           }
         }
-      },      
+      }
+    },
     "securitySchemes": {
       "Bearer": {
         "type": "http",
