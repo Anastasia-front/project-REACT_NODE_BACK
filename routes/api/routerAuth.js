@@ -11,7 +11,7 @@ routerAuth.get("/current", isAuthorized, ctrlAuth.currentUser);
 routerAuth.put("/update", isAuthorized, ctrlAuth.updateUser);
 routerAuth.patch("/theme", isAuthorized, ctrlAuth.changeTheme);
 routerAuth.post("/logout", isAuthorized, ctrlAuth.logout);
-routerAuth.post(
+routerAuth.patch(
   "/avatar",
   isAuthorized,
   upload.single("avatar"),
