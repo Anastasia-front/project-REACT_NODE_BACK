@@ -232,45 +232,6 @@
           }
         }
       }
-    },
-    "/api/users/avatar": {
-      "patch": {
-        "tags": ["Users"],
-        "summary": "User avatar",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {
-          "description": "User avatar updating",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAvatarRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation, avatar updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateAvatarResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (Invalid request body)",
-            "content": {}
-          },
-          "404": {
-            "description": "Not found",
-            "content": {}
-          }
-        }
-      }
     }
   },
   "components": {
@@ -496,30 +457,7 @@
             "example": "Theme changed"
           }
         }
-      },
-      "UpdateAvatarRequest": {
-        "type": "object",
-        "required": ["avatarURL"],
-        "properties": {
-          "avatarURL": {
-            "type": "string",
-            "scheme": "http",
-            "description": "User's avatar",                      
-            "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691507449/task-pro/avatars/64d132a8bc59b83c60b35e6b_avatar.heic"
-          }
-        }
-      },
-      "UpdateAvatarResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "User's avatar",
-            "example": "Avatar changed"
-          }
-        }
-      }
-    },
+      },      
     "securitySchemes": {
       "Bearer": {
         "type": "http",
