@@ -27,10 +27,6 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-    boards: {
-      type: Array,
-      default: [],
-    },
     accessToken: {
       type: String,
       default: null,
