@@ -5,9 +5,7 @@ const { SUPPORT_DEPARTMENT } = process.env;
 
 const help = async (req, res) => {
   const { error } = helpSchema.validate(req.body, { abortEarly: false });
-  if (error) {
-    BadRequestError(error);
-  }
+  if (error) BadRequestError(error);
 
   const { email, comment } = req.body;
 
