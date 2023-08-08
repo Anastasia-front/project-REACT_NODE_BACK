@@ -153,7 +153,7 @@
       }
     },
     "/api/users/update": {
-      "patch": {
+      "put": {
         "tags": ["Users"],
         "summary": "User updating",
         "parameters": [],
@@ -170,6 +170,16 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "Successful operation, user updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserResponse"
+                }
+              }
+            }
+          },
           "204": {
             "description": "User updated, No content"
           },
@@ -185,13 +195,13 @@
       }
     },
     "/api/users/theme": {
-      "put": {
+      "patch": {
         "tags": ["Users"],
         "summary": "User theme",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Update theme's object",
+          "description": "User theme updating",
           "required": true,
           "content": {
             "application/json": {
@@ -208,6 +218,45 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpdateThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/users/avatar": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "User avatar",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "User avatar updating",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAvatarRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, avatar updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateAvatarResponse"
                 }
               }
             }
@@ -400,6 +449,32 @@
           }
         }
       },
+      "UpdateUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User's name. It must contain only Latin letters; may contain numbers, signs, letters in different case",
+            "example": "Mango"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email",
+            "example": "mango@email.com"
+          },
+          "theme": {
+            "type": "string",
+            "description": "User's theme",
+            "example": "dark"
+          },          
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": ""
+          }
+        }
+      },
       "UpdateThemeRequest": {
         "type": "object",
         "required": ["theme"],
@@ -419,6 +494,27 @@
             "type": "string",
             "description": "User's theme",
             "example": "Theme changed"
+          }
+        }
+      },
+      "UpdateAvatarRequest": {
+        "type": "object",
+        "required": ["avatarURL"],
+        "properties": {
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar",            
+            "example": "violet"
+          }
+        }
+      },
+      "UpdateAvatarResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "User's avatar",
+            "example": "Avatar changed"
           }
         }
       }
