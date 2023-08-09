@@ -29,8 +29,6 @@ const googleRedirect = async (req, res) => {
         },
     });
 
-    console.log('РАБОТАЕТ-------------------', userData.data);
-
     res.json(userData.data);
 };
 
