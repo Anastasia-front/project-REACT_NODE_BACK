@@ -28,8 +28,13 @@
     {
       "name": "Tasks",
       "description": "Tasks endpoints"
+    },
+    {
+      "name": "Help",
+      "description": "Help endpoint"
     }
   ],
+
   "paths": {
     "/api/users/register": {
       "post": {
@@ -232,8 +237,151 @@
           }
         }
       }
+    },
+
+    "/api/boards": {
+      "get": {
+        "tags": ["Boards"],
+        "summary": "Get boards list",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, boards list getted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllBoardsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": ["Boards"],
+        "summary": "Add new board",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Board's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBoardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation, new board added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddBoardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/boards/:id": {
+      "get": {
+        "tags": ["Boards"],
+        "summary": "Get board by Id",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Successful operation, board by Id getted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetBoardByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": ["Boards"],
+        "summary": "Update board",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Board's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBoardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, board updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBoardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (Invalid request body)",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Boards"],
+        "summary": "Delete board",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "204": {
+            "description": "Board deleted, No content"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          }
+        }
+      }
     }
   },
+
   "components": {
     "schemas": {
       "RegistrationRequest": {
@@ -280,6 +428,7 @@
           "theme": {
             "type": "string",
             "description": "User's theme",
+            "enum": ["dark", "violet", "light"],
             "example": "dark"
           },
           "avatarURL": {
@@ -370,6 +519,7 @@
           "theme": {
             "type": "string",
             "description": "User's theme",
+            "enum": ["dark", "violet", "light"],
             "example": "dark"
           },
           "avatarURL": {
@@ -427,6 +577,7 @@
           "theme": {
             "type": "string",
             "description": "User's theme",
+            "enum": ["dark", "violet", "light"],
             "example": "dark"
           },
           "avatarURL": {
@@ -455,6 +606,211 @@
             "type": "string",
             "description": "User's theme",
             "example": "Theme changed"
+          }
+        }
+      },
+      "GetAllBoardsResponse": {
+        "type": "array"
+      },
+      "GetBoardByIdResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Board's id",
+            "example": "3214d232436cf45474"
+          }
+        }
+      },
+      "AddBoardRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Mango"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-colors",
+              "icon-container",
+              "icon-hexagon",
+              "icon-lightning",
+              "icon-loading",
+              "icon-project",
+              "icon-star",
+              "icon-puzzle-piece"
+            ],
+            "example": "icon-hexagon"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background",
+            "enum": [
+              "airBalloon",
+              "blue",
+              "cappadocia",
+              "flowers",
+              "gorge",
+              "greens",
+              "moon",
+              "mountains",
+              "rocksAndSea",
+              "sea",
+              "semiMoon",
+              "trailer",
+              "tree",
+              "yacht",
+              "violetSphere",
+              null
+            ],
+            "example": "greens"
+          }
+        }
+      },
+      "AddBoardResponse": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Mango"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-colors",
+              "icon-container",
+              "icon-hexagon",
+              "icon-lightning",
+              "icon-loading",
+              "icon-project",
+              "icon-star",
+              "icon-puzzle-piece"
+            ],
+            "example": "icon-hexagon"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background",
+            "enum": [
+              "airBalloon",
+              "blue",
+              "cappadocia",
+              "flowers",
+              "gorge",
+              "greens",
+              "moon",
+              "mountains",
+              "rocksAndSea",
+              "sea",
+              "semiMoon",
+              "trailer",
+              "tree",
+              "yacht",
+              "violetSphere",
+              null
+            ],
+            "example": "greens"
+          }
+        }
+      },
+      "UpdateBoardRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Mango"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-colors",
+              "icon-container",
+              "icon-hexagon",
+              "icon-lightning",
+              "icon-loading",
+              "icon-project",
+              "icon-star",
+              "icon-puzzle-piece"
+            ],
+            "example": "icon-hexagon"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background",
+            "enum": [
+              "airBalloon",
+              "blue",
+              "cappadocia",
+              "flowers",
+              "gorge",
+              "greens",
+              "moon",
+              "mountains",
+              "rocksAndSea",
+              "sea",
+              "semiMoon",
+              "trailer",
+              "tree",
+              "yacht",
+              "violetSphere",
+              null
+            ],
+            "example": "greens"
+          }
+        }
+      },
+      "UpdateBoardResponse": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Mango"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-colors",
+              "icon-container",
+              "icon-hexagon",
+              "icon-lightning",
+              "icon-loading",
+              "icon-project",
+              "icon-star",
+              "icon-puzzle-piece"
+            ],
+            "example": "icon-hexagon"
+          },
+          "background": {
+            "type": "string",
+            "description": "Board's background",
+            "enum": [
+              "airBalloon",
+              "blue",
+              "cappadocia",
+              "flowers",
+              "gorge",
+              "greens",
+              "moon",
+              "mountains",
+              "rocksAndSea",
+              "sea",
+              "semiMoon",
+              "trailer",
+              "tree",
+              "yacht",
+              "violetSphere",
+              null
+            ],
+            "example": "greens"
           }
         }
       }
