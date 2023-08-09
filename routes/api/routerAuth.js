@@ -6,6 +6,8 @@ const { isAuthorized, upload } = require("../../middlewares");
 const routerAuth = express.Router();
 
 routerAuth.post("/register", ctrlAuth.register);
+routerAuth.get("/google", ctrlAuth.googleAuth);
+routerAuth.get("/google-redirect", ctrlAuth.googleRedirect);
 routerAuth.post("/login", ctrlAuth.login);
 routerAuth.get("/current", isAuthorized, ctrlAuth.currentUser);
 routerAuth.put("/update", isAuthorized, upload.single("avatar"), ctrlAuth.updateUser);
