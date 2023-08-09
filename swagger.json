@@ -231,8 +231,8 @@
             "description": "Bad request (Invalid request body)",
             "content": {}
           },
-          "404": {
-            "description": "Not found",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           }
         }
@@ -256,12 +256,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad request (Invalid request body)",
-            "content": {}
-          },
-          "404": {
-            "description": "Not found",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           }
         }
@@ -296,15 +292,29 @@
           "400": {
             "description": "Bad request (Invalid request body)",
             "content": {}
+          },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
           }
         }
       }
     },
-    "/api/boards/:id": {
+    "/api/boards/{id}": {
       "get": {
         "tags": ["Boards"],
         "summary": "Get board by Id",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
@@ -317,8 +327,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad request (Invalid request body)",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           },
           "404": {
@@ -330,7 +340,17 @@
       "put": {
         "tags": ["Boards"],
         "summary": "Update board",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
         "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Board's object",
@@ -358,8 +378,8 @@
             "description": "Bad request (Invalid request body)",
             "content": {}
           },
-          "404": {
-            "description": "Not found",
+          "401": {
+            "description": "Not authorized",
             "content": {}
           }
         }
@@ -367,14 +387,28 @@
       "delete": {
         "tags": ["Boards"],
         "summary": "Delete board",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981569f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
         "security": [{ "Bearer": [] }],
         "responses": {
           "204": {
             "description": "Board deleted, No content"
           },
+          "401": {
+            "description": "Not authorized",
+            "content": {}
+          },
           "404": {
-            "description": "Not found",
+            "description": "Not Found",
             "content": {}
           }
         }
@@ -409,6 +443,11 @@
       "RegistrationResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "3214d232436cf45474"
+          },
           "name": {
             "type": "string",
             "description": "User's name",
@@ -440,11 +479,6 @@
             "type": "string",
             "description": "User's token",
             "example": null
-          },
-          "_id": {
-            "type": "string",
-            "description": "User's id",
-            "example": "3214d232436cf45474"
           }
         }
       },
@@ -505,6 +539,11 @@
       "CurrentUserResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "User's id",
+            "example": "321b432324dc36545474"
+          },
           "name": {
             "type": "string",
             "description": "User's name",
@@ -526,11 +565,6 @@
             "type": "string",
             "description": "User's avatar",
             "example": ""
-          },
-          "_id": {
-            "type": "string",
-            "description": "User's id",
-            "example": "321b432324dc36545474"
           }
         }
       },
@@ -609,16 +643,246 @@
           }
         }
       },
+
       "GetAllBoardsResponse": {
-        "type": "array"
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "Board Id",
+              "example": "64d360ea78fe376e4981199f"
+            },
+            "title": {
+              "type": "string",
+              "description": "Board's title",
+              "example": "First Board"
+            },
+            "icon": {
+              "type": "string",
+              "description": "Board's icon",
+              "enum": [
+                "icon-colors",
+                "icon-container",
+                "icon-hexagon",
+                "icon-lightning",
+                "icon-loading",
+                "icon-project",
+                "icon-star",
+                "icon-puzzle-piece"
+              ],
+              "example": "icon-hexagon"
+            },
+            "background": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "description": "Board Id",
+                  "example": "64cfa9fc11bb5659c825dd6a"
+                },
+                "mobile": {
+                  "type": "string",
+                  "description": "Board mobile background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-mobile-1x_tmnwdh.jpg"
+                },
+                "mobile2x": {
+                  "type": "string",
+                  "description": "Board mobile2x background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-mobile-2x_wa6opa.jpg"
+                },
+                "tablet": {
+                  "type": "string",
+                  "description": "Board tablet background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-tablet-1x_ocmwje.jpg"
+                },
+                "tablet2x": {
+                  "type": "string",
+                  "description": "Board tablet2x background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-tablet-2x_tuujn9.jpg"
+                },
+                "desktop": {
+                  "type": "string",
+                  "description": "Board desktop background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-desktop-1x_r8kbcg.jpg"
+                },
+                "desktop2x": {
+                  "type": "string",
+                  "description": "Board desktop2x background",
+                  "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-desktop-2x_mfum6m.jpg"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Board background title",
+                  "example": "greens"
+                }
+              }
+            },
+            "columnOrder": {
+              "type": "array",
+              "description": "Column Order",
+              "example": []
+            },
+            "owner": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "description": "User's id",
+                  "example": "64d11ad3b31bb700519dad42"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "User's name",
+                  "example": "Mango"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "User's email",
+                  "format": "email",
+                  "example": "mango@email.com"
+                },
+                "theme": {
+                  "type": "string",
+                  "description": "User's theme",
+                  "enum": ["dark", "violet", "light"],
+                  "example": "dark"
+                },
+                "avatarURL": {
+                  "type": "string",
+                  "description": "User's avatar",
+                  "example": ""
+                },
+                "boards": {
+                  "type": "array",
+                  "description": "Boards",
+                  "example": []
+                }
+              }
+            }
+          }
+        }
       },
       "GetBoardByIdResponse": {
         "type": "object",
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Board's id",
-            "example": "3214d232436cf45474"
+            "description": "Board Id",
+            "example": "64d360ea78fe376e4981199f"
+          },
+          "title": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "First Board"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Board's icon",
+            "enum": [
+              "icon-colors",
+              "icon-container",
+              "icon-hexagon",
+              "icon-lightning",
+              "icon-loading",
+              "icon-project",
+              "icon-star",
+              "icon-puzzle-piece"
+            ],
+            "example": "icon-hexagon"
+          },
+          "background": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "Board Id",
+                "example": "64cfa9fc11bb5659c825dd6a"
+              },
+              "mobile": {
+                "type": "string",
+                "description": "Board mobile background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-mobile-1x_tmnwdh.jpg"
+              },
+              "mobile2x": {
+                "type": "string",
+                "description": "Board mobile2x background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-mobile-2x_wa6opa.jpg"
+              },
+              "tablet": {
+                "type": "string",
+                "description": "Board tablet background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-tablet-1x_ocmwje.jpg"
+              },
+              "tablet2x": {
+                "type": "string",
+                "description": "Board tablet2x background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-tablet-2x_tuujn9.jpg"
+              },
+              "desktop": {
+                "type": "string",
+                "description": "Board desktop background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-desktop-1x_r8kbcg.jpg"
+              },
+              "desktop2x": {
+                "type": "string",
+                "description": "Board desktop2x background",
+                "example": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1691170033/task-pro/backgrounds/greens-desktop-2x_mfum6m.jpg"
+              },
+              "title": {
+                "type": "string",
+                "description": "Board background title",
+                "example": "greens"
+              }
+            }
+          },
+          "columnOrder": {
+            "type": "array",
+            "description": "Column Order",
+            "example": []
+          },
+          "owner": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "User's id",
+                "example": "64d11ad3b31bb700519dad42"
+              },
+              "name": {
+                "type": "string",
+                "description": "User's name",
+                "example": "Mango"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "format": "email",
+                "example": "mango@email.com"
+              },
+              "theme": {
+                "type": "string",
+                "description": "User's theme",
+                "enum": ["dark", "violet", "light"],
+                "example": "dark"
+              },
+              "avatarURL": {
+                "type": "string",
+                "description": "User's avatar",
+                "example": ""
+              },
+              "boards": {
+                "type": "array",
+                "description": "Boards",
+                "example": []
+              }
+            }
+          },
+          "columns": {
+            "type": "array",
+            "description": "Columns",
+            "example": []
           }
         }
       },
@@ -628,7 +892,7 @@
           "title": {
             "type": "string",
             "description": "Board's title",
-            "example": "Mango"
+            "example": "First Board"
           },
           "icon": {
             "type": "string",
@@ -673,48 +937,35 @@
       "AddBoardResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Board`s Id",
+            "example": "64d360ea78fe376e4981199f"
+          },
           "title": {
             "type": "string",
             "description": "Board's title",
-            "example": "Mango"
+            "example": "First Board"
           },
           "icon": {
             "type": "string",
             "description": "Board's icon",
-            "enum": [
-              "icon-colors",
-              "icon-container",
-              "icon-hexagon",
-              "icon-lightning",
-              "icon-loading",
-              "icon-project",
-              "icon-star",
-              "icon-puzzle-piece"
-            ],
             "example": "icon-hexagon"
           },
           "background": {
             "type": "string",
-            "description": "Board's background",
-            "enum": [
-              "airBalloon",
-              "blue",
-              "cappadocia",
-              "flowers",
-              "gorge",
-              "greens",
-              "moon",
-              "mountains",
-              "rocksAndSea",
-              "sea",
-              "semiMoon",
-              "trailer",
-              "tree",
-              "yacht",
-              "violetSphere",
-              null
-            ],
-            "example": "greens"
+            "description": "Board's background Id",
+            "example": "64cfa9fc11bb5659c825dd6a"
+          },
+          "columnOrder": {
+            "type": "array",
+            "description": "Column Order",
+            "example": []
+          },
+          "owner": {
+            "type": "string",
+            "description": "Owner`s Id",
+            "example": "64d11ad3b31bb700519dad42"
           }
         }
       },
@@ -724,7 +975,7 @@
           "title": {
             "type": "string",
             "description": "Board's title",
-            "example": "Mango"
+            "example": "First Board"
           },
           "icon": {
             "type": "string",
@@ -769,10 +1020,15 @@
       "UpdateBoardResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Board Id",
+            "example": "64d360ea78fe376e4981199f"
+          },
           "title": {
             "type": "string",
             "description": "Board's title",
-            "example": "Mango"
+            "example": "First Board"
           },
           "icon": {
             "type": "string",
@@ -791,26 +1047,18 @@
           },
           "background": {
             "type": "string",
-            "description": "Board's background",
-            "enum": [
-              "airBalloon",
-              "blue",
-              "cappadocia",
-              "flowers",
-              "gorge",
-              "greens",
-              "moon",
-              "mountains",
-              "rocksAndSea",
-              "sea",
-              "semiMoon",
-              "trailer",
-              "tree",
-              "yacht",
-              "violetSphere",
-              null
-            ],
-            "example": "greens"
+            "description": "Board's background Id",
+            "example": "64cfa9fc11bb5659c825dd6a"
+          },
+          "columnOrder": {
+            "type": "array",
+            "description": "Column Order",
+            "example": []
+          },
+          "owner": {
+            "type": "string",
+            "description": "User's id",
+            "example": "64d11ad3b31bb700519dad42"
           }
         }
       }
