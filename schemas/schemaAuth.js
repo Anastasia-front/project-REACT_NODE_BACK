@@ -57,10 +57,9 @@ const updateSchema = Joi.object({
   email: Joi.string().pattern(regExp.email).messages({
     "string.pattern.base": message.emailInvalid,
   }),
-  password: Joi.string().min(8).max(64).pattern(regExp.password).messages({
+  password: Joi.string().min(8).max(64).pattern(regExp.password).allow(null).messages({
     "string.pattern.base": message.passwordInvalid,
-  }),
-  avatarURL: Joi.string(),
+  })
 });
 
 const updateTheme = Joi.object({
