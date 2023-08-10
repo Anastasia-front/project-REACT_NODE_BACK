@@ -1,8 +1,11 @@
 const { User } = require("../../models");
-const bcrypt = require("bcrypt");
 
 const { authSchema } = require("../../schemas");
-const { BadRequestError, uploadToCloud } = require("../../helpers");
+const {
+  BadRequestError,
+  uploadToCloud,
+  hashedPassword,
+} = require("../../helpers");
 
 const updateUser = async (req, res, next) => {
   const { _id, email: oldEmail, name: oldName } = req.user;
@@ -21,9 +24,7 @@ const updateUser = async (req, res, next) => {
   }
 
   if (password) {
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-    updatedUser.password = hashedPassword;
+    updatedUser.password = await hashedPassword(password);
     updatedUser.accessToken = "";
     res.status(204);
   }

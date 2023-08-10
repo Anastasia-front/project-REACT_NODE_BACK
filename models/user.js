@@ -1,5 +1,10 @@
 const { Schema, model } = require("mongoose");
-const { handleMongooseError } = require("../helpers");
+const {
+  handleMongooseError,
+  signToken,
+  comparePassword,
+  hashPassword,
+} = require("../helpers");
 const { array } = require("../constants");
 const { themes } = array;
 
@@ -34,6 +39,12 @@ const userSchema = new Schema(
   },
   { versionKey: false, timestamps: true }
 );
+
+userSchema.methods.comparePassword = comparePassword;
+
+userSchema.methods.signToken = signToken;
+
+userSchema.pre("save", hashPassword);
 
 userSchema.post("save", handleMongooseError);
 
