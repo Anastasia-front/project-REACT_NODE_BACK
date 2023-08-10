@@ -10,8 +10,7 @@ const addTask = async (req, res) => {
     const { column } = value;
     const result = await Task.create({ ...value });
     const { board } = await Column.findByIdAndUpdate(column, { $push: { taskOrder: result._id } });
-    result.board = board;
-    res.status(201).json(result);
+    res.status(201).json({ ...result._doc, board });
 };
 
 module.exports = addTask;

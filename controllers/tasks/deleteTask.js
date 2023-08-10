@@ -13,7 +13,7 @@ const deleteTask = async (req, res) => {
     result.board = board;
     res.status(200).json({
         message: `Task ${id} deleted successfully`,
-        data: result,
+        data: { ...result._doc, board },
     });
 };
 

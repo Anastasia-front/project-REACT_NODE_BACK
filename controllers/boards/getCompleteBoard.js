@@ -52,24 +52,6 @@ const getCompleteBoard = async (req, res) => {
             },
         },
         {
-            $addFields: {
-                "columns.tasks": {
-                    $map: {
-                        input: "$columns.tasks",
-                        as: "task",
-                        in: {
-                            $mergeObjects: [
-                                "$$task",
-                                {
-                                    board: id
-                                }
-                            ]
-                        }
-                    }
-                }
-            }
-        },
-        {
             $project: {
                 "owner.accessToken": 0,
                 "owner.password": 0,

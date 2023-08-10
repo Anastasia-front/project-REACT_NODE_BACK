@@ -13,8 +13,7 @@ const updateTask = async (req, res) => {
         throw HttpError(404, `Task ${id} not found`);
     }
     const { board } = await Column.findById(result.column);
-    result.board = board;
-    res.json(result);
+    res.json({ ...result._doc, board });
 };
 
 module.exports = updateTask;
