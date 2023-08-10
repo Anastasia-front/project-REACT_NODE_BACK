@@ -20,7 +20,7 @@ const login = async (req, res, next) => {
   if (!isValidPassword) throw HttpError(401, "Password is wrong");
 
   const accessToken = jwt.sign({ id: user._id }, SECRET_KEY, {
-    expiresIn: "30m",
+    expiresIn: "30d",
   });
   await User.findOneAndUpdate({ email }, { accessToken });
   res.json({

@@ -1,4 +1,4 @@
-const { Board, Background } = require("../../models")
+const { Board } = require("../../models")
 const { boardSchemas } = require("../../schemas");
 const { BadRequestError } = require("../../helpers");
 
@@ -7,11 +7,6 @@ const addBoard = async (req, res) => {
         abortEarly: false,
     });
     if (error) BadRequestError(error);
-    if (value.background) {
-        const { background: title } = value;
-        const { _id } = await Background.findOne({ title })
-        value.background = _id;
-    }
     const { _id: owner } = req.user;
     const result = await Board.create({ ...value, owner });
     res.status(201).json(result);

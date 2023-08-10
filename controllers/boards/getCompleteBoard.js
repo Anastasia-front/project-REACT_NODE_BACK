@@ -1,5 +1,6 @@
 const { Types } = require("mongoose");
 const { Board } = require("../../models")
+const { HttpError } = require('../../helpers')
 
 const getCompleteBoard = async (req, res) => {
     const { id } = req.params;
@@ -15,14 +16,6 @@ const getCompleteBoard = async (req, res) => {
                 localField: "_id",
                 foreignField: "board",
                 as: "columns",
-            },
-        },
-        {
-            $lookup: {
-                from: "backgrounds",
-                localField: "background",
-                foreignField: "_id",
-                as: "backgroundArr",
             },
         },
         {
@@ -50,7 +43,6 @@ const getCompleteBoard = async (req, res) => {
         {
             $addFields: {
                 owner: { $arrayElemAt: ["$ownerArr", 0] },
-                background: { $arrayElemAt: ["$backgroundArr", 0] },
                 columns: {
                     $cond: {
                         if: { $eq: ["$columnOrder", []] },
@@ -64,7 +56,8 @@ const getCompleteBoard = async (req, res) => {
             $project: {
                 "owner.accessToken": 0,
                 "owner.password": 0,
-                "backgroundArr": 0,
+                "owner._id": 0,
+                "owner.theme": 0,
                 "ownerArr": 0,
             },
         },
@@ -80,6 +73,10 @@ const getCompleteBoard = async (req, res) => {
             },
         },
     ]);
+
+    if (result.length === 0) {
+        throw HttpError(404, `Board ${id} not found`);
+    }
     res.json(result[0]);
 };
 
