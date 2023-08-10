@@ -10,7 +10,10 @@ const deleteColumn = async (req, res) => {
     await Board.findByIdAndUpdate(result.board, {
         $pull: { columnOrder: result._id },
     });
-    res.status(204).json();
+    res.status(200).json({
+        message: `Column ${id} deleted successfully`,
+        data: result
+    });
 };
 
 module.exports = deleteColumn;

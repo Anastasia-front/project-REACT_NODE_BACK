@@ -19,14 +19,6 @@ const getCompleteBoard = async (req, res) => {
         },
         {
             $lookup: {
-                from: "backgrounds",
-                localField: "background",
-                foreignField: "_id",
-                as: "backgroundArr",
-            },
-        },
-        {
-            $lookup: {
                 from: "users",
                 localField: "owner",
                 foreignField: "_id",
@@ -50,7 +42,6 @@ const getCompleteBoard = async (req, res) => {
         {
             $addFields: {
                 owner: { $arrayElemAt: ["$ownerArr", 0] },
-                background: { $arrayElemAt: ["$backgroundArr", 0] },
                 columns: {
                     $cond: {
                         if: { $eq: ["$columnOrder", []] },
@@ -61,10 +52,29 @@ const getCompleteBoard = async (req, res) => {
             },
         },
         {
+            $addFields: {
+                "columns.tasks": {
+                    $map: {
+                        input: "$columns.tasks",
+                        as: "task",
+                        in: {
+                            $mergeObjects: [
+                                "$$task",
+                                {
+                                    board: id
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
             $project: {
                 "owner.accessToken": 0,
                 "owner.password": 0,
-                "backgroundArr": 0,
+                "owner._id": 0,
+                "owner.theme": 0,
                 "ownerArr": 0,
             },
         },
