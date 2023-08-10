@@ -1,4 +1,4 @@
-const { Task } = require("../../models")
+const { Task, Column } = require("../../models")
 const { taskSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
@@ -12,7 +12,8 @@ const updateTask = async (req, res) => {
     if (!result) {
         throw HttpError(404, `Task ${id} not found`);
     }
-    res.json(result);
+    const { board } = await Column.findById(result.column);
+    res.json({ ...result._doc, board });
 };
 
 module.exports = updateTask;

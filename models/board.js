@@ -14,8 +14,8 @@ const boardSchema = new Schema(
       default: array.icons[0],
     },
     background: {
-      type: Schema.Types.ObjectId,
-      ref: "background",
+      type: String,
+      enum: array.backgrounds,
       default: null
     },
     columnOrder: {

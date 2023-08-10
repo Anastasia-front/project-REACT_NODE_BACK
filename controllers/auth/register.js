@@ -1,7 +1,6 @@
 const { User } = require("../../models");
 const { authSchema } = require("../../schemas");
 const { HttpError, BadRequestError } = require("../../helpers");
-const bcrypt = require("bcrypt");
 
 const register = async (req, res, next) => {
   const { value, error } = authSchema.registerSchema.validate(req.body, {
@@ -9,8 +8,7 @@ const register = async (req, res, next) => {
   });
 
   const { name, email, password } = value;
-  const salt = await bcrypt.genSalt();
-  const hashedPassword = await bcrypt.hash(password, salt);
+
   if (error) BadRequestError(error);
 
   const userEmail = await User.findOne({ email });
@@ -21,7 +19,7 @@ const register = async (req, res, next) => {
   const result = await User.create({
     name,
     email,
-    password: hashedPassword,
+    password,
   });
 
   res.status(201).json(result);

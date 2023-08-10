@@ -1,4 +1,4 @@
-const { Task,Column } = require("../../models")
+const { Task, Column } = require("../../models")
 const { HttpError } = require('../../helpers')
 
 const deleteTask = async (req, res) => {
@@ -7,10 +7,14 @@ const deleteTask = async (req, res) => {
     if (!result) {
         throw HttpError(404, `Task ${id} not found`);
     }
-    await Column.findByIdAndUpdate(result.column, {
+    const { board } = await Column.findByIdAndUpdate(result.column, {
         $pull: { taskOrder: result._id },
     });
-    res.status(204).json({ message: `Task ${id} deleted` });
+    result.board = board;
+    res.status(200).json({
+        message: `Task ${id} deleted successfully`,
+        data: { ...result._doc, board },
+    });
 };
 
 

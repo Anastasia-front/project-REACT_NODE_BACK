@@ -12,14 +12,6 @@ const getAllBoards = async (req, res) => {
         },
         {
             $lookup: {
-                from: "backgrounds",
-                localField: "background",
-                foreignField: "_id",
-                as: "backgroundArr",
-            },
-        },
-        {
-            $lookup: {
                 from: "users",
                 localField: "owner",
                 foreignField: "_id",
@@ -29,19 +21,19 @@ const getAllBoards = async (req, res) => {
         {
             $addFields: {
                 owner: { $arrayElemAt: ["$ownerArr", 0] },
-                background: { $arrayElemAt: ["$backgroundArr", 0] },
             },
         },
         {
             $project: {
                 "owner.accessToken": 0,
                 "owner.password": 0,
-                "backgroundArr": 0,
+                "owner._id": 0,
+                "owner.theme": 0,
                 "ownerArr": 0,
             },
         },
     ]);
-        res.json(result);
+    res.json(result);
 };
 
 module.exports = getAllBoards;
