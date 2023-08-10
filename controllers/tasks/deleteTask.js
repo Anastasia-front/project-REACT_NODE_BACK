@@ -10,10 +10,10 @@ const deleteTask = async (req, res) => {
     const { board } = await Column.findByIdAndUpdate(result.column, {
         $pull: { taskOrder: result._id },
     });
+    result.board = board;
     res.status(200).json({
         message: `Task ${id} deleted successfully`,
         data: result,
-        board,
     });
 };
 

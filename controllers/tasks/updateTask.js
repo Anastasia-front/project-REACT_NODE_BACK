@@ -1,4 +1,4 @@
-const { Task } = require("../../models")
+const { Task, Column } = require("../../models")
 const { taskSchemas } = require("../../schemas");
 const { HttpError, BadRequestError } = require('../../helpers')
 
@@ -12,6 +12,8 @@ const updateTask = async (req, res) => {
     if (!result) {
         throw HttpError(404, `Task ${id} not found`);
     }
+    const { board } = await Column.findById(result.column);
+    result.board = board;
     res.json(result);
 };
 

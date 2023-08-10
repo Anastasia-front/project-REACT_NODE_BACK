@@ -9,7 +9,8 @@ const addTask = async (req, res) => {
     if (error) BadRequestError(error);
     const { column } = value;
     const result = await Task.create({ ...value });
-    await Column.findByIdAndUpdate(column, { $push: { taskOrder: result._id } });
+    const { board } = await Column.findByIdAndUpdate(column, { $push: { taskOrder: result._id } });
+    result.board = board;
     res.status(201).json(result);
 };
 
