@@ -1,5 +1,6 @@
 const { Types } = require("mongoose");
 const { Board } = require("../../models")
+const { HttpError } = require('../../helpers')
 
 const getCompleteBoard = async (req, res) => {
     const { id } = req.params;
@@ -72,6 +73,10 @@ const getCompleteBoard = async (req, res) => {
             },
         },
     ]);
+
+    if (result.length === 0) {
+        throw HttpError(404, `Board ${id} not found`);
+    }
     res.json(result[0]);
 };
 
