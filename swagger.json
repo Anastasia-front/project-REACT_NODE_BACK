@@ -552,7 +552,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, board by Id getted",
+            "description": "Successful operation, board by id get",
             "content": {
               "application/json": {
                 "schema": {
@@ -1174,7 +1174,8 @@
           "accessToken": {
             "type": "string",
             "description": "User's token",
-            "format": "Bearer Token"
+            "format": "Bearer Token",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDRjMzdlMTQ5MzBjMTVhMTg1ZGQyMCIsImlhdCI6MTY5MTY2NTM1MSwiZXhwIjoxNjkxNjY3MTUxfQ.6Vv03mAwPPixXqJkc0DfsYWwEY53EGJKGOUq2HZrQ9o"
           },
           "user": {
             "type": "object",
@@ -2037,7 +2038,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Not found"
+            "example": "Not Found"
           }
         }
       },
@@ -2047,7 +2048,7 @@
           "message": {
             "type": "string",
             "description": "Error message",
-            "example": "Server error"
+            "example": "This text will describe what is wrong with the internal server"
           }
         }
       }
