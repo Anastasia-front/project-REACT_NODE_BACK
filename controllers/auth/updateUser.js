@@ -26,13 +26,13 @@ const updateUser = async (req, res, next) => {
   if (password) {
     updatedUser.password = await hashedPassword(password);
     updatedUser.accessToken = "";
-    res.status(204);
+    res.status(204).json();
   }
 
   if (email && email !== oldEmail) {
     updatedUser.email = email;
     updatedUser.accessToken = "";
-    res.status(204);
+    res.status(204).json();
   }
 
   const result = await User.findByIdAndUpdate(_id, updatedUser, {
