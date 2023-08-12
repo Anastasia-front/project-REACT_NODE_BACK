@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
-const { array } = require('../constants')
+const { array } = require("../constants");
 
 const boardSchema = new Schema(
   {
@@ -16,15 +16,15 @@ const boardSchema = new Schema(
     background: {
       type: String,
       enum: array.backgrounds,
-      default: null
+      default: "null",
     },
     columnOrder: {
       type: Array,
-      default: []
+      default: [],
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: "user",
       required: true,
     },
   },
