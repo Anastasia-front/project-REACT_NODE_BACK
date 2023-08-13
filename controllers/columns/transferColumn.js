@@ -24,7 +24,10 @@ const transferColumn = async (req, res) => {
             $push: { columnOrder: { $each: [columnId], $position: destination.index } }
         }
     );
-    res.json({ message: `Column position has been changed to ${destination.index} on board ${destination.droppableId}` });
+    res.json({
+        board: destination.droppableId,
+        message: `Column position has been changed to ${destination.index} on board ${destination.droppableId}`
+    });
 };
 
 module.exports = transferColumn;

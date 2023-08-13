@@ -18,14 +18,17 @@ const transferTask = async (req, res) => {
             $pull: { taskOrder: { $in: taskId } }
         }
     )
-    await Column.findByIdAndUpdate(
+    const { board } = await Column.findByIdAndUpdate(
         destination.droppableId,
         {
             $push: { taskOrder: { $each: [taskId], $position: destination.index } }
         }
     );
     await Task.findByIdAndUpdate(id, { column: columnId })
-    res.json({ message: `Task position has been changed to ${destination.index} in column ${destination.droppableId}` });
+    res.json({
+        board,
+        message: `Task position has been changed to ${destination.index} in column ${destination.droppableId}`
+    });
 };
 
 module.exports = transferTask;
