@@ -2,6 +2,7 @@ const addTask = require('./addTask');
 const deleteTask = require('./deleteTask');
 const updateTask = require('./updateTask');
 const transferTask = require('./transferTask');
+const changeColumn = require('./changeColumn');
 const { ctrlWrapper } = require('../../decorators')
 
 module.exports = {
@@ -9,5 +10,6 @@ module.exports = {
     updateTask: ctrlWrapper(updateTask),
     deleteTask: ctrlWrapper(deleteTask),
     transferTask: ctrlWrapper(transferTask),
+    changeColumn: ctrlWrapper(changeColumn),
 }
 

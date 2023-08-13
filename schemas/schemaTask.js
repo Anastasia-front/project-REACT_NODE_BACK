@@ -18,6 +18,10 @@ const updateTaskSchema = Joi.object({
   deadline: Joi.string().pattern(regExp.deadline).allow(null),
 });
 
-const taskSchemas = { addTaskSchema, updateTaskSchema };
+const changeColumnSchema = Joi.object({
+  column: Joi.objectId().required(),
+});
+
+const taskSchemas = { addTaskSchema, updateTaskSchema, changeColumnSchema };
 
 module.exports = taskSchemas;

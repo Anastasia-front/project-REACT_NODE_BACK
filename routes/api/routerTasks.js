@@ -14,4 +14,6 @@ routerTasks.delete('/:id', isAuthorized, isValidId, ctrlTasks.deleteTask);
 
 routerTasks.patch('/:id/transfer', isAuthorized, isValidId, ctrlTasks.transferTask);
 
+routerTasks.patch('/:id/tocolumn', isAuthorized, isValidId, ctrlTasks.changeColumn);
+
 module.exports = routerTasks;
