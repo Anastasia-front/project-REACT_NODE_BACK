@@ -1,6 +1,6 @@
 # Backend API "TaskPro"
 
-This repository contains the TaskPro Backend API project, which provides an API for interacting with the TaskPro application.
+This repository contains the TaskPro Backend API project, which provides an API for interacting with the [TaskPro application](https://tkachenko01001.github.io/project-REACT_NODE/)
 
 ## Project Overview
 
@@ -14,7 +14,7 @@ Here are some of the key technologies and libraries used in this project:
 
 ## API Documentation
 
-For detailed descriptions of API requests and interactions, refer to the [TaskPro Documentation](https://project-react-node-back.onrender.com/api-docs)
+For detailed descriptions of API requests and interactions, refer to the [TaskPro documentation](https://project-react-node-back.onrender.com/api-docs)
 
 <img src="./images/users.png" alt="TaskPro API Documentation Users" width="900" height="500">
 <img src="./images/boards-columns-tasks.png" alt="TaskPro API Documentation Boards-Columns-Tasks" width="900" height="500">
