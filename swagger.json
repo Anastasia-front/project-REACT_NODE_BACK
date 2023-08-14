@@ -60,11 +60,21 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -120,7 +130,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -129,12 +139,12 @@
               }
             }
           },
-          "401": {
-            "description": "Not authorized (email or password is wrong)",
+          "404": {
+            "description": "Not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -152,15 +162,54 @@
         }
       }
     },
-    "/api/users/logout": {
-      "post": {
+    "/api/users/google": {
+      "get": {
         "tags": ["Users"],
-        "summary": "User logout",
+        "summary": "User login with google",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Google form of sign in",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "example": "<!DOCTYPE html> <html> <head> ... </head> <body> <form action='/login' method='post'> ... </form> </body> </html>"
+                }
+              },
+              "image/png": {
+                "example": "./images/google-form.png"
+              }
+            }
+          },
+
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Below is an example of the Google form:",
+        "externalDocs": {
+          "description": "Google Form Screenshot",
+          "url": "https://res.cloudinary.com/dtmvdgvnh/image/upload/v1692039176/task-pro/back-end/google-form_j8qbq2.png"
+        }
+      }
+    },
+    "/api/users/google-redirect": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Google redirect",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
-          "204": {
-            "description": "Logout Successful, No content"
+          "302": {
+            "description": " Redirect to user's page"
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -212,6 +261,16 @@
               }
             }
           },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -239,7 +298,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "avatarURL": {
+                  "avatar": {
                     "type": "file",
                     "format": "binary",
                     "description": "User's avatar",
@@ -277,11 +336,8 @@
               }
             }
           },
-          "204": {
-            "description": "User updated, No content"
-          },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -296,6 +352,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -342,7 +408,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -357,6 +423,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -379,6 +455,7 @@
         "tags": ["Users"],
         "summary": "User help",
         "parameters": [],
+        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Help's object",
           "required": true,
@@ -402,7 +479,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -417,6 +494,59 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "User logout",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "204": {
+            "description": "Logout successful, No Content"
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -443,7 +573,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation, boards list getted",
+            "description": "Successful operation, boards list is got",
             "content": {
               "application/json": {
                 "schema": {
@@ -458,6 +588,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -502,7 +642,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -517,6 +657,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -537,7 +687,7 @@
     "/api/boards/{id}": {
       "get": {
         "tags": ["Boards"],
-        "summary": "Get board by Id",
+        "summary": "Get board by id",
         "parameters": [
           {
             "in": "path",
@@ -576,7 +726,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
                 }
               }
             }
@@ -631,7 +781,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -646,6 +796,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
                 }
               }
             }
@@ -678,8 +838,15 @@
         ],
         "security": [{ "Bearer": [] }],
         "responses": {
-          "204": {
-            "description": "Board deleted, No content"
+          "200": {
+            "description": "Successful operation, board is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteBoardResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -692,11 +859,11 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "Not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundBoardResponse"
                 }
               }
             }
@@ -744,7 +911,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -759,6 +926,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -815,7 +992,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -830,6 +1007,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
                 }
               }
             }
@@ -862,8 +1049,15 @@
         ],
         "security": [{ "Bearer": [] }],
         "responses": {
-          "204": {
-            "description": "Column deleted, No content"
+          "200": {
+            "description": "Successful operation, column is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteColumnResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -880,7 +1074,88 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/columns/{id}/transfer": {
+      "patch": {
+        "tags": ["Columns"],
+        "summary": "Transfer column",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Column's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferColumnRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, column is transferred",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferColumnResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundColumnResponse"
                 }
               }
             }
@@ -928,7 +1203,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -943,6 +1218,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundResponse"
                 }
               }
             }
@@ -999,7 +1284,7 @@
             }
           },
           "400": {
-            "description": "Bad request (Invalid request body)",
+            "description": "Bad request (invalid request body)",
             "content": {
               "application/json": {
                 "schema": {
@@ -1014,6 +1299,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundTaskResponse"
                 }
               }
             }
@@ -1046,8 +1341,15 @@
         ],
         "security": [{ "Bearer": [] }],
         "responses": {
-          "204": {
-            "description": "Task deleted, No content"
+          "200": {
+            "description": "Successful operation, column is deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteColumnResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Not authorized (email or password is wrong)",
@@ -1064,7 +1366,88 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/errorNotFoundResponse"
+                  "$ref": "#/components/schemas/errorNotFoundTaskResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorServerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks/{id}/transfer": {
+      "patch": {
+        "tags": ["Tasks"],
+        "summary": "Transfer task",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "example": "64d360ea78fe376e4981199f",
+            "schema": {
+              "minimum": 1
+            }
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Task's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation, column is transferred",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferTaskResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request body)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorBadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized (email or password is wrong)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorNotFoundTaskResponse"
                 }
               }
             }
@@ -1130,7 +1513,7 @@
           "password": {
             "type": "string",
             "description": "User's password",
-            "example": "Mango12378"
+            "example": "$2b$10$fNwXWuOdimNwjq1RdYCgUuCQfBvOGxxOqYqVta.A81EFBdBxOxk.m"
           },
           "theme": {
             "type": "string",
@@ -1147,6 +1530,16 @@
             "type": "string",
             "description": "User's token",
             "example": null
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:30:47.840Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-08-09T18:31:22.235Z"
           }
         }
       },
@@ -1352,7 +1745,7 @@
           "properties": {
             "_id": {
               "type": "string",
-              "description": "Board Id",
+              "description": "Board id",
               "example": "64d360ea78fe376e4981199f"
             },
             "title": {
@@ -1393,23 +1786,22 @@
                 "trailer",
                 "tree",
                 "yacht",
-                "violetSphere"
+                "violetSphere",
+                "null"
               ],
               "example": "greens"
             },
             "columnOrder": {
               "type": "array",
-              "description": "Column Order",
-              "example": []
+              "description": "Column order",
+              "example": [
+                "64d5585cf10982f0832226f4",
+                "64d5585cf10982f0832226f4"
+              ]
             },
             "owner": {
               "type": "object",
               "properties": {
-                "_id": {
-                  "type": "string",
-                  "description": "User's id",
-                  "example": "64d11ad3b31bb700519dad42"
-                },
                 "name": {
                   "type": "string",
                   "description": "User's name",
@@ -1421,16 +1813,21 @@
                   "format": "email",
                   "example": "mango@email.com"
                 },
-                "theme": {
-                  "type": "string",
-                  "description": "User's theme",
-                  "enum": ["dark", "violet", "light"],
-                  "example": "dark"
-                },
+
                 "avatarURL": {
                   "type": "string",
                   "description": "User's avatar",
                   "example": ""
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-08-09T18:30:47.840Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-08-09T18:31:22.235Z"
                 }
               }
             },
@@ -1452,7 +1849,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1479,6 +1876,7 @@
             "type": "string",
             "description": "Board's background",
             "enum": [
+              "null",
               "airBalloon",
               "blue",
               "cappadocia",
@@ -1499,17 +1897,12 @@
           },
           "columnOrder": {
             "type": "array",
-            "description": "Column Order",
-            "example": []
+            "description": "Column order",
+            "example": ["64d52e77846f3f325f35b8f0"]
           },
           "owner": {
             "type": "object",
             "properties": {
-              "_id": {
-                "type": "string",
-                "description": "User's id",
-                "example": "64d11ad3b31bb700519dad42"
-              },
               "name": {
                 "type": "string",
                 "description": "User's name",
@@ -1521,12 +1914,7 @@
                 "format": "email",
                 "example": "mango@email.com"
               },
-              "theme": {
-                "type": "string",
-                "description": "User's theme",
-                "enum": ["dark", "violet", "light"],
-                "example": "dark"
-              },
+
               "avatarURL": {
                 "type": "string",
                 "description": "User's avatar",
@@ -1547,7 +1935,63 @@
           "columns": {
             "type": "array",
             "description": "Columns",
-            "example": []
+            "example": [
+              {
+                "_id": "64d5585cf10982f0832226f4",
+                "title": "2222222",
+                "board": "64d52e77846f3f325f35b8f0",
+                "taskOrder": [
+                  "64d8907409b4e55ec6255990",
+                  "64d8907809b4e55ec6255994",
+                  "64d8901109b4e55ec6255983",
+                  "64d88e0d09b4e55ec625596c"
+                ],
+                "createdAt": "2023-08-10T21:36:28.801Z",
+                "updatedAt": "2023-08-13T08:13:04.104Z",
+                "tasks": [
+                  {
+                    "_id": "64d8901109b4e55ec6255983",
+                    "title": "Task 1",
+                    "description": "This is the description of task 1",
+                    "priority": "without",
+                    "deadline": null,
+                    "column": "64d5585cf10982f0832226f4",
+                    "createdAt": "2023-08-13T08:10:57.245Z",
+                    "updatedAt": "2023-08-13T08:13:04.154Z"
+                  },
+                  {
+                    "_id": "64d8907409b4e55ec6255990",
+                    "title": "Task 2",
+                    "description": "This is the description of task 2",
+                    "priority": "low",
+                    "deadline": "21/12/2022",
+                    "column": "64d5585cf10982f0832226f4",
+                    "createdAt": "2023-08-13T08:12:36.110Z",
+                    "updatedAt": "2023-08-13T08:12:36.110Z"
+                  },
+                  {
+                    "_id": "64d88e0d09b4e55ec625596c",
+                    "title": "Task 3",
+                    "description": "This is the description of task 3",
+                    "priority": "medium",
+                    "deadline": "13/04/2023",
+                    "column": "64d5585cf10982f0832226f4",
+                    "createdAt": "2023-08-13T08:12:40.524Z",
+                    "updatedAt": "2023-08-13T08:12:40.524Z"
+                  },
+                  {
+                    "_id": "64d8907809b4e55ec6255994",
+                    "title": "Task 4",
+                    "description": "This is the description of task 4",
+                    "priority": "high",
+                    "deadline": null,
+                    "column": "64d5585cf10982f0832226f4",
+                    "createdAt": "2023-08-13T08:12:40.524Z",
+                    "updatedAt": "2023-08-13T08:12:40.524Z"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -1594,7 +2038,7 @@
               "tree",
               "yacht",
               "violetSphere",
-              null
+              "null"
             ],
             "example": "greens"
           }
@@ -1606,7 +2050,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Board`s Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1626,12 +2070,12 @@
           },
           "columnOrder": {
             "type": "array",
-            "description": "Column Order",
+            "description": "Column order",
             "example": []
           },
           "owner": {
             "type": "string",
-            "description": "Owner`s Id",
+            "description": "Owner`s id",
             "example": "64d11ad3b31bb700519dad42"
           },
           "createdAt": {
@@ -1689,7 +2133,7 @@
               "tree",
               "yacht",
               "violetSphere",
-              null
+              "null"
             ],
             "example": "greens"
           }
@@ -1700,7 +2144,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1726,11 +2170,11 @@
           "background": {
             "type": "string",
             "description": "Board's background title",
-            "example": "moon"
+            "example": "greens"
           },
           "columnOrder": {
             "type": "array",
-            "description": "Column Order",
+            "description": "Column order",
             "example": []
           },
           "owner": {
@@ -1751,6 +2195,72 @@
         }
       },
 
+      "DeleteBoardResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Board id",
+            "example": "Board {id} deleted successfully"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "Board id",
+                "example": "64d360ea78fe376e4981199f"
+              },
+              "title": {
+                "type": "string",
+                "description": "Board's title",
+                "example": "First Board"
+              },
+              "icon": {
+                "type": "string",
+                "description": "Board's icon",
+                "enum": [
+                  "icon-colors",
+                  "icon-container",
+                  "icon-hexagon",
+                  "icon-lightning",
+                  "icon-loading",
+                  "icon-project",
+                  "icon-star",
+                  "icon-puzzle-piece"
+                ],
+                "example": "icon-hexagon"
+              },
+              "background": {
+                "type": "string",
+                "description": "Board's background title",
+                "example": "moon"
+              },
+              "columnOrder": {
+                "type": "array",
+                "description": "Column order",
+                "example": []
+              },
+              "owner": {
+                "type": "string",
+                "description": "User's id",
+                "example": "64d11ad3b31bb700519dad42"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:30:47.840Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:31:22.235Z"
+              }
+            }
+          }
+        }
+      },
+
       "AddColumnRequest": {
         "type": "object",
         "properties": {
@@ -1761,7 +2271,7 @@
           },
           "board": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           }
         },
@@ -1772,7 +2282,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Column`s Id",
+            "description": "Column`s id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1782,12 +2292,12 @@
           },
           "board": {
             "type": "string",
-            "description": "Board`s Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           },
           "taskOrder": {
             "type": "array",
-            "description": "Task Order",
+            "description": "Task order",
             "example": []
           },
           "createdAt": {
@@ -1819,7 +2329,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Column`s Id",
+            "description": "Column`s id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1829,12 +2339,12 @@
           },
           "board": {
             "type": "string",
-            "description": "Board`s Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           },
           "taskOrder": {
             "type": "array",
-            "description": "Task Order",
+            "description": "Task order",
             "example": []
           },
           "createdAt": {
@@ -1846,6 +2356,105 @@
             "type": "string",
             "format": "date-time",
             "example": "2023-08-09T18:31:22.235Z"
+          }
+        }
+      },
+
+      "TransferColumnRequest": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number",
+                "description": "Column index",
+                "example": 0
+              },
+              "droppableId": {
+                "type": "string",
+                "description": "Column id",
+                "example": "64d360ea78fe376e4981199f"
+              }
+            },
+            "required": ["droppableId"]
+          },
+          "destination": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number",
+                "description": "Column index",
+                "example": 1
+              },
+              "droppableId": {
+                "type": "string",
+                "description": "Column id",
+                "example": "64d360ea78fe376e4981199f"
+              }
+            },
+            "required": ["index", "droppableId"]
+          }
+        }
+      },
+      "TransferColumnResponse": {
+        "type": "object",
+        "properties": {
+          "board": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64d360ea78fe376e4981199f"
+          },
+          "message": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Column position has been changed to {index} on board {id}"
+          }
+        }
+      },
+
+      "DeleteColumnResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Column id",
+            "example": "Column {id} deleted successfully"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "Column id",
+                "example": "64d360ea78fe376e4981199f"
+              },
+              "title": {
+                "type": "string",
+                "description": "Column's title",
+                "example": "First Column"
+              },
+              "board": {
+                "type": "string",
+                "description": "Board id",
+                "example": "64d360ea78fe376e4981199f"
+              },
+              "taskOrder": {
+                "type": "array",
+                "description": "Task order",
+                "example": []
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:30:47.840Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:31:22.235Z"
+              }
+            }
           }
         }
       },
@@ -1876,7 +2485,7 @@
           },
           "column": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Board id",
             "example": "64d360ea78fe376e4981199f"
           }
         },
@@ -1887,7 +2496,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Task`s Id",
+            "description": "Task`s id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1911,9 +2520,14 @@
             "description": "Task's deadline",
             "example": "10/08/2023"
           },
+          "board": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64d360ea78fe376e4981199f"
+          },
           "column": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Column id",
             "example": "64d360ea78fe376e4981199f"
           },
           "createdAt": {
@@ -1960,7 +2574,7 @@
         "properties": {
           "_id": {
             "type": "string",
-            "description": "Task`s Id",
+            "description": "Task`s id",
             "example": "64d360ea78fe376e4981199f"
           },
           "title": {
@@ -1984,9 +2598,14 @@
             "description": "Task's deadline",
             "example": "10/08/2023"
           },
+          "board": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64d360ea78fe376e4981199f"
+          },
           "column": {
             "type": "string",
-            "description": "Board Id",
+            "description": "Column id",
             "example": "64d360ea78fe376e4981199f"
           },
           "createdAt": {
@@ -1998,6 +2617,105 @@
             "type": "string",
             "format": "date-time",
             "example": "2023-08-09T18:31:22.235Z"
+          }
+        }
+      },
+
+      "TransferTaskRequest": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number",
+                "description": "Task index",
+                "example": 0
+              },
+              "droppableId": {
+                "type": "string",
+                "description": "Task id",
+                "example": "64d360ea78fe376e4981199f"
+              }
+            },
+            "required": ["droppableId"]
+          },
+          "destination": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number",
+                "description": "Task index",
+                "example": 1
+              },
+              "droppableId": {
+                "type": "string",
+                "description": "Task id",
+                "example": "64d360ea78fe376e4981199f"
+              }
+            },
+            "required": ["index", "droppableId"]
+          }
+        }
+      },
+      "TransferTaskResponse": {
+        "type": "object",
+        "properties": {
+          "board": {
+            "type": "string",
+            "description": "Board id",
+            "example": "64d360ea78fe376e4981199f"
+          },
+          "message": {
+            "type": "string",
+            "description": "Board's title",
+            "example": "Task position has been changed to {index} in column {id}"
+          }
+        }
+      },
+
+      "DeleteTaskResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Task id",
+            "example": "Task {id} deleted successfully"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "description": "Task id",
+                "example": "64d360ea78fe376e4981199f"
+              },
+              "title": {
+                "type": "string",
+                "description": "Task's title",
+                "example": "First Task"
+              },
+              "column": {
+                "type": "string",
+                "description": "Column id",
+                "example": "64d360ea78fe376e4981199f"
+              },
+              "taskOrder": {
+                "type": "array",
+                "description": "Task order",
+                "example": []
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:30:47.840Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-08-09T18:31:22.235Z"
+              }
+            }
           }
         }
       },
@@ -2039,6 +2757,36 @@
             "type": "string",
             "description": "Error message",
             "example": "Not Found"
+          }
+        }
+      },
+      "errorNotFoundBoardResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Board {id} not found"
+          }
+        }
+      },
+      "errorNotFoundColumnResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Column {id} not found"
+          }
+        }
+      },
+      "errorNotFoundTaskResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Task {id} not found"
           }
         }
       },
