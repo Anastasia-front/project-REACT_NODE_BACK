@@ -11,7 +11,6 @@ const icons = [
   "icon-puzzle-piece",
 ];
 const backgrounds = [
-  "null",
   "airBalloon",
   "blue",
   "cappadocia",

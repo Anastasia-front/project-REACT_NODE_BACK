@@ -1787,7 +1787,7 @@
                 "tree",
                 "yacht",
                 "violetSphere",
-                "null"
+                null
               ],
               "example": "greens"
             },
@@ -1876,7 +1876,7 @@
             "type": "string",
             "description": "Board's background",
             "enum": [
-              "null",
+              null,
               "airBalloon",
               "blue",
               "cappadocia",
@@ -2038,7 +2038,7 @@
               "tree",
               "yacht",
               "violetSphere",
-              "null"
+              null
             ],
             "example": "greens"
           }
@@ -2133,7 +2133,7 @@
               "tree",
               "yacht",
               "violetSphere",
-              "null"
+              null
             ],
             "example": "greens"
           }
