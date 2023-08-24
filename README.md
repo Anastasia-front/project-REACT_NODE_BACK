@@ -26,7 +26,7 @@ Here are some of the key technologies and libraries used in this project:
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-2. **Denys Tkachenko** - ` team lead`` from the _frontend_ | _frontend_  `developer` <a href="https://github.com/Tkachenko01001">
+2. **Denys Tkachenko** - `team lead` from the _frontend_ | _frontend_ `developer` <a href="https://github.com/Tkachenko01001">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
@@ -101,7 +101,7 @@ Here are some of the key technologies and libraries used in this project:
 
 ## Presentation of project
 
-This is a link of our presentation ➡️ [![Presentation of project](https://img.shields.io/badge/bug-busters-DarkSlateGray?style=for-the-badge)](https://docs.google.com/presentation/d/1MTGJwpG5kNE_zFHPRGo0qjaKO7gitRCC/edit?usp=sharing&ouid=106478031856412069122&rtpof=true&sd=true)
+This is a link of our presentation ➡️ [![Presentation of project](https://img.shields.io/badge/bug-busters-darkslategray?style=for-the-badge)](https://docs.google.com/presentation/d/1MTGJwpG5kNE_zFHPRGo0qjaKO7gitRCC/edit?usp=sharing&ouid=106478031856412069122&rtpof=true&sd=true)
 
 ## API Documentation
 
