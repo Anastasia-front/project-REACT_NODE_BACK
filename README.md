@@ -2,11 +2,11 @@
 
 This repository contains the TaskPro Backend API project, which provides an API for interacting with the TaskPro application
 
-This is a link to the frontend deploy -> [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/)
+This is a link to the frontend deploy ➡️ [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/)
 
-This is a link to the frontend repository -> [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE)
+This is a link to the frontend repository ➡️ [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE)
 
-This is a link to the backend deploy -> [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-indigo?style=for-the-badge)](https://project-react-node-back.onrender.com/)
+This is a link to the backend deploy ➡️ [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-indigo?style=for-the-badge)](https://project-react-node-back.onrender.com/)
 
 ## Project Overview
 
@@ -20,28 +20,88 @@ Here are some of the key technologies and libraries used in this project:
 
 ## Our team
 
-1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_; _backend_, _frontend_ `developer` - <a href="https://github.com/Anastasia-front">
+1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_ | _backend_, _frontend_ `developer` <a href="https://github.com/Anastasia-front">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-2. **Denys Tkachenko** - team lead from the frontend; front-end developer; [Github](https://github.com/Tkachenko01001) [Linkedin](https://www.linkedin.com/in/denis-tkachenko-developer/)
-3. **Natalia Moskalenko** - scrum master; backend, frontend developer; [Github](https://github.com/Nataly-Moskalenko) [Linkedin](https://www.linkedin.com/in/nataly-moskalenko/)
-4. **Maksym Ostapchuk** - backend, frontend developer; [Github](https://github.com/gadgetadd) [Linkedin](https://www.linkedin.com/in/maksym-ostapchukk/)
-5. **Andrii Verhun** - backend, frontend developer; [Github](https://github.com/Andrii-Verhun) [Linkedin](https://www.linkedin.com/in/andrii-verhun/)
-6. **V'yacheslav Novytskyi** - backend and frontend developer; [Github](https://github.com/W-Novytskyi) [Linkedin](https://www.linkedin.com/in/viacheslav-novytskyi-22a26b278/)
-7. **Vlad Vasin** - backend developer; [Github](https://github.com/Sldvld) [Linkedin]()
-8. **Oleksandr Kambarov** - frontend developer; [Github](https://github.com/OleksandrKambarov) [Linkedin](https://www.linkedin.com/in/oleksandrkambarov/)
-9. **Volodymyr Ponomarov** - frontend developer; [Github](https://github.com/ripper3061) [Linkedin](https://www.linkedin.com/in/volodymyr-ponomarov/)
-10. **Dmytro Kukol** - frontend developer; [Github](https://github.com/demonsys) [Linkedin]()
-11. **Lesya Brodskaya** - frontend developer; [Github](https://github.com/Lesya-Brodskaya) [Linkedin](https://www.linkedin.com/in/lesia-brodska/)
-12. **Oleksandr Ionin** - frontend developer; [Github](https://github.com/Ionytch) [Linkedin](https://www.linkedin.com/in/oleksandr-ionin-225aa61b4/)
-13. **Oleksiy Potapenko** - frontend developer; [Github](https://github.com/gambel1) [Linkedin](https://www.linkedin.com/in/alexpotapenko/)
+2. **Denys Tkachenko** - ` team lead`` from the _frontend_ | _frontend_  `developer` <a href="https://github.com/Tkachenko01001">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+3. **Natalia Moskalenko** - `scrum master` | _backend_, _frontend_ `developer` <a href="https://github.com/Nataly-Moskalenko">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/nataly-moskalenko/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+4. **Maksym Ostapchuk** - _backend_, _frontend_ `developer` <a href="https://github.com/gadgetadd">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href='https://www.linkedin.com/in/maksym-ostapchukk/'>
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+5. **Andrii Verhun** - _backend_, _frontend_ `developer` <a href="https://github.com/Andrii-Verhun">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/andrii-verhun/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+6. **V'yacheslav Novytskyi** - _backend_ and _frontend_ `developer` <a href="https://github.com/W-Novytskyi">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/viacheslav-novytskyi-22a26b278/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+7. **Vlad Vasin** - _backend_ `developer` <a href="https://github.com/Sldvld">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+8. **Oleksandr Kambarov** - _frontend_ `developer` <a href="https://github.com/OleksandrKambarov">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/oleksandrkambarov/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+9. **Volodymyr Ponomarov** - _frontend_ `developer` <a href="https://github.com/ripper3061">
+   <img src='./images/github.png' alt="Github repository" width="35" height="35">
+   </a>
+   <a href="https://www.linkedin.com/in/volodymyr-ponomarov/">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+   </a>
+10. **Dmytro Kukol** - _frontend_ `developer` <a href="https://github.com/demonsys">
+    <img src='./images/github.png' alt="Github repository" width="35" height="35">
+    </a>
+    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
+    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+    </a>
+11. **Lesya Brodskaya** - _frontend_ `developer` <a href="https://github.com/Lesya-Brodskaya">
+    <img src='./images/github.png' alt="Github repository" width="35" height="35">
+    </a>
+    <a href="https://www.linkedin.com/in/lesia-brodska/">
+    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+    </a>
+12. **Oleksandr Ionin** - _frontend_ `developer` <a href="https://github.com/Ionytch">
+    <img src='./images/github.png' alt="Github repository" width="35" height="35">
+    </a>
+    <a href="https://www.linkedin.com/in/oleksandr-ionin-225aa61b4/">
+    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+    </a>
+13. **Oleksiy Potapenko** - _frontend_ `developer` <a href="https://github.com/gambel1">
+    <img src='./images/github.png' alt="Github repository" width="35" height="35">
+    </a>
+    <a href="https://www.linkedin.com/in/alexpotapenko/">
+    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
+    </a>
 
 ## Presentation of project
 
-There is the [link to our presentation](https://nodejs69.slack.com/files/U05C0BJ82BV/F05N8JKEN6M/_______________________bugbusters__1_.pptx)[![Presentation](https://www.flaticon.com/ru/free-icon/payment-method_11817673)](https://nodejs69.slack.com/files/U05C0BJ82BV/F05N8JKEN6M/_______________________bugbusters__1_.pptx)
+This is a link of our presentation ➡️ [![Presentation of project](https://img.shields.io/badge/bug-busters-DarkSlateGray?style=for-the-badge)](https://docs.google.com/presentation/d/1MTGJwpG5kNE_zFHPRGo0qjaKO7gitRCC/edit?usp=sharing&ouid=106478031856412069122&rtpof=true&sd=true)
 
 ## API Documentation
 
