@@ -2,11 +2,11 @@
 
 This repository contains the TaskPro Backend API project, which provides an API for interacting with the TaskPro application
 
-This is a link to the frontend deploy ➡️ [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/)
+This is a link to the frontend deploy [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/)
 
-This is a link to the frontend repository ➡️ [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE)
+This is a link to the frontend repository [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE)
 
-This is a link to the backend deploy ➡️ [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-indigo?style=for-the-badge)](https://project-react-node-back.onrender.com/)
+This is a link to the backend deploy [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-indigo?style=for-the-badge)](https://project-react-node-back.onrender.com/)
 
 ## Project Overview
 
@@ -20,19 +20,19 @@ Here are some of the key technologies and libraries used in this project:
 
 ## Our team
 
-1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_ | _backend_, _frontend_ `developer` <a href="https://github.com/Anastasia-front">
+1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_ --- _backend_, _frontend_ `developer` <a href="https://github.com/Anastasia-front">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-2. **Denys Tkachenko** - `team lead` from the _frontend_ | _frontend_ `developer` <a href="https://github.com/Tkachenko01001">
+2. **Denys Tkachenko** - `team lead` from the _frontend_ --- _frontend_ `developer` <a href="https://github.com/Tkachenko01001">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-3. **Natalia Moskalenko** - `scrum master` | _backend_, _frontend_ `developer` <a href="https://github.com/Nataly-Moskalenko">
+3. **Natalia Moskalenko** - `scrum master` --- _backend_, _frontend_ `developer` <a href="https://github.com/Nataly-Moskalenko">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/nataly-moskalenko/">
@@ -101,7 +101,7 @@ Here are some of the key technologies and libraries used in this project:
 
 ## Presentation of project
 
-This is a link of our presentation ➡️ [![Presentation of project](https://img.shields.io/badge/bug-busters-darkslategray?style=for-the-badge)](https://docs.google.com/presentation/d/1MTGJwpG5kNE_zFHPRGo0qjaKO7gitRCC/edit?usp=sharing&ouid=106478031856412069122&rtpof=true&sd=true)
+This is a link of our presentation [![Presentation of project](https://img.shields.io/badge/bug-busters-darkslategray?style=for-the-badge)](https://docs.google.com/presentation/d/1MTGJwpG5kNE_zFHPRGo0qjaKO7gitRCC/edit?usp=sharing&ouid=106478031856412069122&rtpof=true&sd=true)
 
 ## API Documentation
 
