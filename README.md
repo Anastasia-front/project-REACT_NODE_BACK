@@ -21,10 +21,10 @@ Here are some of the key technologies and libraries used in this project:
 ## Our team
 
 1. **Anastasiia Prysiazhnaia** - team lead from the backend; backend, frontend developer - <a href="https://github.com/Anastasia-front">
-   <img src='./images/github.png' alt="Github repository">
+   <img src='./images/github.png' alt="Github repository" width="50" height='50'>
    </a>
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
-   <img src='./images/linkedin.png' alt="Linkedin profile">
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="50" height='50'>
    </a>
 2. **Denys Tkachenko** - team lead from the frontend; front-end developer; [Github](https://github.com/Tkachenko01001) [Linkedin](https://www.linkedin.com/in/denis-tkachenko-developer/)
 3. **Natalia Moskalenko** - scrum master; backend, frontend developer; [Github](https://github.com/Nataly-Moskalenko) [Linkedin](https://www.linkedin.com/in/nataly-moskalenko/)
