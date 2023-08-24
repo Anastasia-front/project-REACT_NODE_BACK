@@ -2,11 +2,11 @@
 
 This repository contains the TaskPro Backend API project, which provides an API for interacting with the TaskPro application
 
-<div align="center">This is a link to the frontend deploy - [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/) </div>
+This is a link to the frontend deploy - [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://tkachenko01001.github.io/project-REACT_NODE/)
 
-<div align="center">This is a link to the frontend repository - [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE) </div>
+This is a link to the frontend repository - [![GitHub](https://img.shields.io/badge/Repository-GitHub-green?style=for-the-badge&logo=github)](https://github.com/Tkachenko01001/project-REACT_NODE)
 
-<div align="center">This is a link to the backend deploy - [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-violet?style=for-the-badge)](https://project-react-node-back.onrender.com/) </div>
+This is a link to the backend deploy - [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-violet?style=for-the-badge)](https://project-react-node-back.onrender.com/)
 
 ## Project Overview
 
@@ -21,10 +21,10 @@ Here are some of the key technologies and libraries used in this project:
 ## Our team
 
 1. **Anastasiia Prysiazhnaia** - team lead from the backend; backend, frontend developer - <a href="https://github.com/Anastasia-front">
-   <img src='./images/github.png' alt="Github repository" width="50" height='50'>
+   <img src='./images/github.png' alt="Github repository" width="20" height="20">
    </a>
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
-   <img src='./images/linkedin.png' alt="Linkedin profile"  width="50" height='50'>
+   <img src='./images/linkedin.png' alt="Linkedin profile"  width="20" height="20">
    </a>
 2. **Denys Tkachenko** - team lead from the frontend; front-end developer; [Github](https://github.com/Tkachenko01001) [Linkedin](https://www.linkedin.com/in/denis-tkachenko-developer/)
 3. **Natalia Moskalenko** - scrum master; backend, frontend developer; [Github](https://github.com/Nataly-Moskalenko) [Linkedin](https://www.linkedin.com/in/nataly-moskalenko/)
