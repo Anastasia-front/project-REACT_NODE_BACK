@@ -11,6 +11,7 @@ const icons = [
   "icon-puzzle-piece",
 ];
 const backgrounds = [
+  "default",
   "airBalloon",
   "blue",
   "cappadocia",
@@ -25,7 +26,7 @@ const backgrounds = [
   "trailer",
   "tree",
   "yacht",
-  "violetSphere",
+  "violetSphere",  
 ];
 
 module.exports = { themes, priorities, icons, backgrounds };
