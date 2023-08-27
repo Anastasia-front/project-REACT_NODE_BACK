@@ -20,19 +20,19 @@ Here are some of the key technologies and libraries used in this project:
 
 ## Our team
 
-1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_ -- _backend_, _frontend_ `developer` <a href="https://github.com/Anastasia-front">
+1. **Anastasiia Prysiazhnaia** - `team lead` from the _backend_ — _backend_, _frontend_ `developer` <a href="https://github.com/Anastasia-front">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-2. **Denys Tkachenko** - `team lead` from the _frontend_ -- _frontend_ `developer` <a href="https://github.com/Tkachenko01001">
+2. **Denys Tkachenko** - `team lead` from the _frontend_ — _frontend_ `developer` <a href="https://github.com/Tkachenko01001">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
    </a>
-3. **Natalia Moskalenko** - `scrum master` -- _backend_, _frontend_ `developer` <a href="https://github.com/Nataly-Moskalenko">
+3. **Natalia Moskalenko** - `scrum master` — _backend_, _frontend_ `developer` <a href="https://github.com/Nataly-Moskalenko">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
    <a href="https://www.linkedin.com/in/nataly-moskalenko/">
