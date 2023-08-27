@@ -15,8 +15,8 @@ const boardSchema = new Schema(
     },
     background: {
       type: String,
-      enum: array.backgrounds.concat([null]),
-      default: null,
+      enum: array.backgrounds,
+      default: array.backgrounds[0],
     },
     columnOrder: {
       type: Array,
