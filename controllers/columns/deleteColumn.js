@@ -1,4 +1,4 @@
-const { Column, Board } = require("../../models")
+const { Column, Board, Task } = require("../../models")
 const { HttpError } = require('../../helpers')
 
 const deleteColumn = async (req, res) => {
@@ -6,6 +6,9 @@ const deleteColumn = async (req, res) => {
     const result = await Column.findByIdAndRemove(id);
     if (!result) {
         throw HttpError(404, `Column ${id} not found`);
+    }
+    if (result.taskOrder.length !== 0) {
+        await Task.deleteMany({ _id: { $in: result.taskOrder } });
     }
     await Board.findByIdAndUpdate(result.board, {
         $pull: { columnOrder: result._id },
