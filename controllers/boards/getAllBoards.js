@@ -3,33 +3,37 @@ const { Board } = require("../../models")
 
 
 const getAllBoards = async (req, res) => {
-    const { _id: owner } = req.user;
+    const { _id } = req.user;
     const result = await Board.aggregate([
         {
             $match: {
-                owner: new Types.ObjectId(owner),
-            },
+                $expr: {
+                    $in: [new Types.ObjectId(_id), "$owners"]
+                }
+            }
         },
         {
             $lookup: {
                 from: "users",
-                localField: "owner",
-                foreignField: "_id",
-                as: "ownerArr",
-            },
-        },
-        {
-            $addFields: {
-                owner: { $arrayElemAt: ["$ownerArr", 0] },
-            },
-        },
-        {
-            $project: {
-                "owner.accessToken": 0,
-                "owner.password": 0,
-                "owner._id": 0,
-                "owner.theme": 0,
-                "ownerArr": 0,
+                let: { owners: "$owners" },
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $in: ["$_id", "$$owners"]
+                            }
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 0,
+                            avatarURL: 1,
+                            name: 1,
+                            email: 1
+                        }
+                    }
+                ],
+                as: "owners",
             },
         },
     ]);

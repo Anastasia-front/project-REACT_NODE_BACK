@@ -21,9 +21,25 @@ const getCompleteBoard = async (req, res) => {
         {
             $lookup: {
                 from: "users",
-                localField: "owner",
-                foreignField: "_id",
-                as: "ownerArr",
+                let: { owners: "$owners" },
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $in: ["$_id", "$$owners"]
+                            }
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 0,
+                            avatarURL: 1,
+                            name: 1,
+                            email: 1
+                        }
+                    }
+                ],
+                as: "owners",
             },
         },
         {
@@ -42,7 +58,6 @@ const getCompleteBoard = async (req, res) => {
         },
         {
             $addFields: {
-                owner: { $arrayElemAt: ["$ownerArr", 0] },
                 columns: {
                     $cond: {
                         if: { $eq: ["$columnOrder", []] },
@@ -53,22 +68,13 @@ const getCompleteBoard = async (req, res) => {
             },
         },
         {
-            $project: {
-                "owner.accessToken": 0,
-                "owner.password": 0,
-                "owner._id": 0,
-                "owner.theme": 0,
-                "ownerArr": 0,
-            },
-        },
-        {
             $group: {
                 _id: "$_id",
                 title: { $first: "$title" },
                 icon: { $first: "$icon" },
                 background: { $first: "$background" },
                 columnOrder: { $first: "$columnOrder" },
-                owner: { $first: "$owner" },
+                owners: { $first: "$owners" },
                 columns: { $push: "$columns" },
             },
         },

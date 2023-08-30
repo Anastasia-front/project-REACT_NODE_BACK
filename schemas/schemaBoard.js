@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const { array } = require("../constants");
+const { regExp, array, message } = require("../constants");
 
 const addBoardSchema = Joi.object({
   title: Joi.string().required(),
@@ -16,6 +16,16 @@ const updateBoardSchema = Joi.object({
     .valid(...array.backgrounds),
 });
 
-const boardSchemas = { addBoardSchema, updateBoardSchema };
+const ownersSchema = Joi.object({
+  email: Joi.string()
+    .pattern(regExp.email)
+    .required()
+    .messages({
+      "any.required": message.fieldRequired("email"),
+      "string.pattern.base": message.emailInvalid,
+    }),
+});
+
+const boardSchemas = { addBoardSchema, updateBoardSchema, ownersSchema };
 
 module.exports = boardSchemas;

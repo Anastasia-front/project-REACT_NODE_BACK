@@ -7,8 +7,8 @@ const addBoard = async (req, res) => {
         abortEarly: false,
     });
     if (error) BadRequestError(error);
-    const { _id: owner } = req.user;
-    const result = await Board.create({ ...value, owner });
+    const { _id } = req.user;
+    const result = await Board.create({ ...value, owners:[_id] });
     res.status(201).json(result);
 };
 
