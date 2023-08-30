@@ -16,4 +16,8 @@ routerBoards.put('/:id', isAuthorized, isValidId, ctrlBoards.updateBoard);
 
 routerBoards.delete('/:id', isAuthorized, isValidId, ctrlBoards.deleteBoard);
 
+routerBoards.patch('/:id/add-user', isAuthorized, isValidId, ctrlBoards.addUser);
+
+routerBoards.patch('/:id/remove-user', isAuthorized, isValidId, ctrlBoards.removeUser);
+
 module.exports = routerBoards;
