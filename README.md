@@ -1,4 +1,4 @@
-**Читати іншою мовою: [Українська](README.ua.md).**
+**Read in another language: [Ukrainian](README.ua.md).**
 
 # Backend API "TaskPro"
 
