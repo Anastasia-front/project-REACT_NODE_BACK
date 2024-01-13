@@ -1,4 +1,4 @@
-**Read in another language: [English](README.md).**
+**Читати іншою мовою: [Англійська](README.md).**
 
 # Бекенд API "TaskPro"
 
