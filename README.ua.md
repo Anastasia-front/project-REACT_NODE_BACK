@@ -34,84 +34,19 @@
 
 ## Наша команда
 
- 1. **Анастасія Присяжна** - `team-lead` команди по _бекенду_ — _бекенд_, _фронтенд_ ``розробник`` <a href="https://github.com/Anastasia-front">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-2. **Денис Ткаченко** - `team-lead` команди по _фронтенду_ — _фронтенд_ `розробник` <a href="https://github.com/Tkachenko01001">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-3. **Наталія Москаленко** - scrum-мастер — _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/Nataly-Moskalenko">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/nataly-moskalenko/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-4. **Максим Остапчук** - _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/gadgetadd">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href='https://www.linkedin.com/in/maksym-ostapchukk/'>
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-5. **Андрій Вергун** - _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/Andrii-Verhun">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/andrii-verhun/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-6. **В'ячеслав Новицький** - _бекенд_ та _фронтенд_ `розробник` <a href="https://github.com/W-Novytskyi">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/viacheslav-novytskyi-22a26b278/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-7. **Влад Васін** - _бекенд_ `розробник` <a href="https://github.com/Sldvld">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-8. **Олександр Камбаров** - _фронтенд_ `розробник` <a href="https://github.com/OleksandrKambarov">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/oleksandrkambarov/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-9. **Володимир Пономарьов** - _фронтенд_ `розробник` <a href="https://github.com/ripper3061">
-   <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-   </a>
-   <a href="https://www.linkedin.com/in/volodymyr-ponomarov/">
-   <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-   </a>
-10. **Дмитро Кукол** - _фронтенд_ `розробник` <a href="https://github.com/demonsys">
-    <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-    </a>
-    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
-    <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-    </a>
-11. **Леся Бродська** - _фронтенд_ `розробник` <a href="https://github.com/Lesya-Brodskaya">
-    <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-    </a>
-    <a href="https://www.linkedin.com/in/lesia-brodska/">
-    <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-    </a>
-12. **Олександр Іонін** - _фронтенд_ `розробник` <a href="https://github.com/Ionytch">
-    <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-    </a>
-    <a href="https://www.linkedin.com/in/oleksandr-ionin-225aa61b4/">
-    <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-    </a>
-13. **Олексій Потапенко** - _фронтенд_ `розробник` <a href="https://github.com/gambel1">
-    <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35">
-    </a>
-    <a href="https://www.linkedin.com/in/alexpotapenko/">
-    <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35">
-    </a>
+ 1. **Анастасія Присяжна** - `team-lead` команди по _бекенду_ — _бекенд_, _фронтенд_ ``розробник`` <a href="https://github.com/Anastasia-front"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/anastasiia-prysiazhnaia"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+2. **Денис Ткаченко** - `team-lead` команди по _фронтенду_ — _фронтенд_ `розробник` <a href="https://github.com/Tkachenko01001"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/denis-tkachenko-developer/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+3. **Наталія Москаленко** - scrum-мастер — _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/Nataly-Moskalenko"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/nataly-moskalenko/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+4. **Максим Остапчук** - _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/gadgetadd"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href='https://www.linkedin.com/in/maksym-ostapchukk/'><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+5. **Андрій Вергун** - _бекенд_, _фронтенд_ `розробник` <a href="https://github.com/Andrii-Verhun"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/andrii-verhun/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+6. **В'ячеслав Новицький** - _бекенд_ та _фронтенд_ `розробник` <a href="https://github.com/W-Novytskyi"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/viacheslav-novytskyi-22a26b278/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+7. **Влад Васін** - _бекенд_ `розробник` <a href="https://github.com/Sldvld"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+8. **Олександр Камбаров** - _фронтенд_ `розробник` <a href="https://github.com/OleksandrKambarov"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/oleksandrkambarov/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+9. **Володимир Пономарьов** - _фронтенд_ `розробник` <a href="https://github.com/ripper3061"><img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"></a><a href="https://www.linkedin.com/in/volodymyr-ponomarov/"><img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"></a>
+10. **Дмитро Кукол** - _фронтенд_ `розробник` <a href="https://github.com/demonsys"> <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"> </a> <a href="https://www.linkedin.com/in/denis-tkachenko-developer/"> <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"> </a>
+11. **Леся Бродська** - _фронтенд_ `розробник` <a href="https://github.com/Lesya-Brodskaya"> <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"> </a> <a href="https://www.linkedin.com/in/lesia-brodska/"> <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"> </a>
+12. **Олександр Іонін** - _фронтенд_ `розробник` <a href="https://github.com/Ionytch"> <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"> </a> <a href="https://www.linkedin.com/in/oleksandr-ionin-225aa61b4/"> <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"> </a>
+13. **Олексій Потапенко** - _фронтенд_ `розробник` <a href="https://github.com/gambel1"> <img src='./images/github.png' alt="Репозиторій GitHub" width="35" height="35"> </a> <a href="https://www.linkedin.com/in/alexpotapenko/"> <img src='./images/linkedin.png' alt="Профіль LinkedIn"  width="35" height="35"> </a>
 
 
 ## Презентація проекту
