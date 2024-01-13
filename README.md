@@ -1,3 +1,4 @@
+**Читати іншою мовою: [Українська](README.ua.md).**
 
 # Backend API "TaskPro"
 
@@ -9,7 +10,7 @@ This is a link to the frontend repository [![GitHub](https://img.shields.io/badg
 
 This is a link to the backend deploy [![Deploy to OnRender](https://img.shields.io/badge/Deploy-onRender-indigo?style=for-the-badge)](https://project-react-node-back.onrender.com/)
 
-## Table of content
+## Table of contents
 
 - [Project overview](#project-overview)
 - [Technologies used](#technologies-used)
