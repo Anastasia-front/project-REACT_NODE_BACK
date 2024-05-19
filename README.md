@@ -73,9 +73,6 @@ Here are some of the key technologies used in this project:
 7. **Vlad Vasin** - _backend_ `developer` <a href="https://github.com/Sldvld">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
-   <a href="https://www.linkedin.com/in/">
-   <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
-   </a>
 8. **Oleksandr Kambarov** - _frontend_ `developer` <a href="https://github.com/OleksandrKambarov">
    <img src='./images/github.png' alt="Github repository" width="35" height="35">
    </a>
@@ -90,9 +87,6 @@ Here are some of the key technologies used in this project:
    </a>
 10. **Dmytro Kukol** - _frontend_ `developer` <a href="https://github.com/demonsys">
     <img src='./images/github.png' alt="Github repository" width="35" height="35">
-    </a>
-    <a href="https://www.linkedin.com/in/denis-tkachenko-developer/">
-    <img src='./images/linkedin.png' alt="Linkedin profile"  width="35" height="35">
     </a>
 11. **Lesya Brodskaya** - _frontend_ `developer` <a href="https://github.com/Lesya-Brodskaya">
     <img src='./images/github.png' alt="Github repository" width="35" height="35">
